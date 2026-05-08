@@ -9,7 +9,7 @@ const jobs = [
     languages: "JavaScript, ReactJS",
     location: "Bengaluru",
     image:
-      "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=1200&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=400",
     map: "https://maps.google.com/?q=Bengaluru"
   },
   {
@@ -20,7 +20,7 @@ const jobs = [
     languages: "Figma, HTML, CSS",
     location: "Hyderabad",
     image:
-      "https://images.unsplash.com/photo-1558655146-9f40138edfeb?q=80&w=1200&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1558655146-9f40138edfeb?w=400",
     map: "https://maps.google.com/?q=Hyderabad"
   },
   {
@@ -31,7 +31,7 @@ const jobs = [
     languages: "English, Kannada",
     location: "Chennai",
     image:
-      "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1200&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400",
     map: "https://maps.google.com/?q=Chennai"
   }
 ];
@@ -60,11 +60,12 @@ export default function App() {
   };
 
   // SAVE DATA TO GOOGLE SHEET
+
   const saveToGoogleSheet = async (jobTitle = "") => {
 
     try {
 
-      await fetch(GOOGLE_SCRIPT_URL, {
+      fetch(GOOGLE_SCRIPT_URL, {
         method: "POST",
         mode: "no-cors",
         headers: {
@@ -83,22 +84,22 @@ export default function App() {
     }
   };
 
-  // SAVE FORM ENTRY ONLY ONCE
+  // SAVE FORM ENTRY
+
   const handleSubmit = async (e) => {
 
     e.preventDefault();
 
-    // SAVE USER ENTRY
-    await saveToGoogleSheet("FORM_ENTRY");
+    saveToGoogleSheet("FORM_ENTRY");
 
-    // SHOW JOBS
     setShowJobs(true);
   };
 
   // SAVE JOB APPLICATION
+
   const handleApply = async (jobTitle) => {
 
-    await saveToGoogleSheet(jobTitle);
+    saveToGoogleSheet(jobTitle);
 
     alert("Application submitted successfully!");
   };
@@ -107,9 +108,23 @@ export default function App() {
 
     <div className="container">
 
-      <h1 className="title">
-        Job Search Portal
-      </h1>
+      {/* HEADER */}
+
+      <header className="header">
+
+        <div className="logo-section">
+
+          <h1 className="logo">
+            WorkMart
+          </h1>
+
+          <p className="tagline">
+            Find Your Dream Job
+          </p>
+
+        </div>
+
+      </header>
 
       {!showJobs ? (
 
@@ -139,7 +154,6 @@ export default function App() {
             placeholder="Enter Designation"
             value={formData.designation}
             onChange={handleChange}
-            required
           />
 
           <input
@@ -148,14 +162,12 @@ export default function App() {
             placeholder="Enter Location"
             value={formData.location}
             onChange={handleChange}
-            required
           />
 
           <select
             name="gender"
             value={formData.gender}
             onChange={handleChange}
-            required
           >
 
             <option value="">
@@ -168,6 +180,10 @@ export default function App() {
 
             <option>
               Female
+            </option>
+
+             <option>
+              Other
             </option>
 
           </select>
@@ -189,6 +205,7 @@ export default function App() {
               <img
                 src={job.image}
                 alt={job.title}
+                loading="lazy"
               />
 
               <h2>
