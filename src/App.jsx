@@ -1,40 +1,10 @@
 import { useState } from "react";
 
-const jobs = [
-  {
-    id: 1,
-    title: "React JS Developer",
-    salary: "₹35,000 - ₹60,000",
-    experience: "1 - 3 Years",
-    languages: "JavaScript, ReactJS",
-    location: "Bengaluru",
-    image:
-      "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=400",
-    map: "https://maps.google.com/?q=Bengaluru"
-  },
-  {
-    id: 2,
-    title: "UI/UX Designer",
-    salary: "₹25,000 - ₹45,000",
-    experience: "0 - 2 Years",
-    languages: "Figma, HTML, CSS",
-    location: "Hyderabad",
-    image:
-      "https://images.unsplash.com/photo-1558655146-9f40138edfeb?w=400",
-    map: "https://maps.google.com/?q=Hyderabad"
-  },
-  {
-    id: 3,
-    title: "Digital Marketing Executive",
-    salary: "₹20,000 - ₹40,000",
-    experience: "1 - 2 Years",
-    languages: "English, Kannada",
-    location: "Chennai",
-    image:
-      "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400",
-    map: "https://maps.google.com/?q=Chennai"
-  }
-];
+import jobs from "./jobsData";
+
+import JobCard from "./components/JobCard";
+
+import JobDetailsModal from "./components/JobDetailsModal";
 
 export default function App() {
 
@@ -46,10 +16,16 @@ export default function App() {
     gender: ""
   });
 
-  const [showJobs, setShowJobs] = useState(false);
+  const [showJobs, setShowJobs] =
+    useState(false);
+
+  const [selectedJob, setSelectedJob] =
+    useState(null);
 
   const GOOGLE_SCRIPT_URL =
     "https://script.google.com/macros/s/AKfycbz18DX-0EEynCQOi0DyG0fqFCBkgGlY5Dl7yd7yEuI5EeEXSHUmrKbuPNhP9ZI0i6Q/exec";
+
+  // HANDLE INPUT CHANGES
 
   const handleChange = (e) => {
 
@@ -59,9 +35,11 @@ export default function App() {
     });
   };
 
-  // SAVE DATA TO GOOGLE SHEET
+  // SAVE TO GOOGLE SHEET
 
-  const saveToGoogleSheet = async (jobTitle = "") => {
+  const saveToGoogleSheet = async (
+    jobTitle = ""
+  ) => {
 
     try {
 
@@ -69,12 +47,14 @@ export default function App() {
         method: "POST",
         mode: "no-cors",
         headers: {
-          "Content-Type": "application/json"
+          "Content-Type":
+            "application/json"
         },
         body: JSON.stringify({
           ...formData,
           appliedJob: jobTitle,
-          createdAt: new Date().toLocaleString()
+          createdAt:
+            new Date().toLocaleString()
         })
       });
 
@@ -84,51 +64,78 @@ export default function App() {
     }
   };
 
-  // SAVE FORM ENTRY
+  // FORM SUBMIT
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
 
     e.preventDefault();
 
-    saveToGoogleSheet("FORM_ENTRY");
+    saveToGoogleSheet(
+      "FORM_ENTRY"
+    );
 
     setShowJobs(true);
   };
 
-  // SAVE JOB APPLICATION
+  // APPLY JOB
 
-  const handleApply = async (jobTitle) => {
+  const handleApply = (
+    jobTitle
+  ) => {
 
     saveToGoogleSheet(jobTitle);
 
-    alert("Application submitted successfully!");
+    alert(
+      "Application Submitted Successfully!"
+    );
   };
 
   return (
 
-    <div className="container">
+  <div className="min-h-screen bg-yellow-50">
 
-      {/* HEADER */}
+    {/* HEADER */}
 
-      <header className="header">
+    <header className="sticky top-0 z-40 bg-yellow-400 shadow-md px-4 py-4">
 
-        <div className="logo-section">
+      <div className="flex items-center justify-between">
 
-          <h1 className="logo">
-            WorkMart
+        <div>
+
+          <h1 className="text-2xl sm:text-4xl font-extrabold text-gray-900">
+
+            Work Station
+
           </h1>
 
-          <p className="tagline">
+          <p className="text-yellow-900 text-xs sm:text-sm mt-1">
+
             Find Your Dream Job
+
           </p>
 
         </div>
 
-      </header>
+      </div>
+
+    </header>
+
+    {/* MAIN */}
+
+    <div className="p-3 sm:p-5">
 
       {!showJobs ? (
 
-        <form className="form-card" onSubmit={handleSubmit}>
+        <form
+          onSubmit={handleSubmit}
+          className="max-w-md mx-auto bg-white border border-yellow-300 rounded-3xl shadow-xl p-5 flex flex-col gap-4"
+        >
+
+          <h2 className="text-xl font-bold text-center text-gray-800 mb-2">
+
+            Job Search Form
+
+          </h2>
 
           <input
             type="text"
@@ -137,37 +144,42 @@ export default function App() {
             value={formData.name}
             onChange={handleChange}
             required
+            className="border border-yellow-300 focus:border-yellow-500 rounded-xl p-3 outline-none text-sm"
           />
 
           <input
-            type="text"
+            type="tel"
             name="phone_No"
-            placeholder="Enter Your Phone Number"
+            placeholder="Enter Phone Number"
             value={formData.phone_No}
             onChange={handleChange}
             required
+            className="border border-yellow-300 focus:border-yellow-500 rounded-xl p-3 outline-none text-sm"
           />
 
           <input
             type="text"
             name="designation"
-            placeholder="Enter Designation"
+            placeholder="Job Role / Designation"
             value={formData.designation}
             onChange={handleChange}
+            className="border border-yellow-300 focus:border-yellow-500 rounded-xl p-3 outline-none text-sm"
           />
 
           <input
             type="text"
             name="location"
-            placeholder="Enter Location"
+            placeholder="Preferred Location"
             value={formData.location}
             onChange={handleChange}
+            className="border border-yellow-300 focus:border-yellow-500 rounded-xl p-3 outline-none text-sm"
           />
 
           <select
             name="gender"
             value={formData.gender}
             onChange={handleChange}
+            className="border border-yellow-300 focus:border-yellow-500 rounded-xl p-3 outline-none text-sm bg-white"
           >
 
             <option value="">
@@ -182,74 +194,80 @@ export default function App() {
               Female
             </option>
 
-             <option>
+            <option>
               Other
             </option>
 
           </select>
 
-          <button type="submit">
+          <button
+            type="submit"
+            className="bg-yellow-400 hover:bg-yellow-500 active:scale-[0.98] transition-all text-black font-bold py-3 rounded-xl shadow-md"
+          >
+
             Search Jobs
+
           </button>
 
         </form>
 
       ) : (
 
-        <div className="job-grid">
+        <>
 
-          {jobs.map((job) => (
+          {/* TOP BAR */}
 
-            <div className="job-card" key={job.id}>
+          <div className="flex items-center justify-between mb-4">
 
-              <img
-                src={job.image}
-                alt={job.title}
-                loading="lazy"
+            <h2 className="text-lg sm:text-2xl font-bold text-gray-800">
+
+              Available Jobs
+
+            </h2>
+
+            <button
+              onClick={() =>
+                setShowJobs(false)
+              }
+              className="bg-black text-white px-4 py-2 rounded-xl text-sm"
+            >
+
+              Back
+
+            </button>
+
+          </div>
+
+          {/* JOB GRID */}
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+
+            {jobs.map((job) => (
+
+              <JobCard
+                key={job.id}
+                job={job}
+                handleApply={handleApply}
+                setSelectedJob={setSelectedJob}
               />
 
-              <h2>
-                {job.title}
-              </h2>
+            ))}
 
-              <p>
-                <strong>Salary:</strong> {job.salary}
-              </p>
+          </div>
 
-              <p>
-                <strong>Experience:</strong> {job.experience}
-              </p>
-
-              <p>
-                <strong>Languages:</strong> {job.languages}
-              </p>
-
-              <p>
-                <strong>Location:</strong> {job.location}
-              </p>
-
-              <a
-                href={job.map}
-                target="_blank"
-                rel="noreferrer"
-              >
-                View Location
-              </a>
-
-              <button
-                onClick={() => handleApply(job.title)}
-              >
-                Apply Now
-              </button>
-
-            </div>
-
-          ))}
-
-        </div>
+        </>
 
       )}
 
+      {/* MODAL */}
+
+      <JobDetailsModal
+        selectedJob={selectedJob}
+        setSelectedJob={setSelectedJob}
+      />
+
     </div>
-  );
+
+  </div>
+);
 }
