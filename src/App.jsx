@@ -310,7 +310,24 @@ export default function App() {
 
             {/* TOP BAR */}
 
-            <div className="flex items-center justify-between mb-4">
+     
+            <div
+  className="
+    fixed
+    top-[51px]
+    left-0
+    w-full
+    z-40
+    bg-yellow-50
+    px-3
+    py-2
+    flex
+    items-center
+    justify-between
+    border-b
+    border-yellow-100
+  "
+>
 
 
               <h2 className="text-lg sm:text-2xl font-bold text-gray-800">
@@ -343,7 +360,7 @@ export default function App() {
 
             {/* JOB GRID */}
 
-            <div className="flex flex-col gap-4">
+            <div className="flex flex-col gap-4 pt-[55px]">
 
               {jobs.map((job) => (
 
