@@ -1,7 +1,12 @@
 import {
   Copy,
-  Phone
+  Phone,
+  MapPin,
+  Briefcase,
+  IndianRupee
 } from "lucide-react";
+
+import { useState } from "react";
 
 export default function JobCard({
   job,
@@ -10,6 +15,9 @@ export default function JobCard({
 }) {
 
   if (!job) return null;
+
+  const [showHR, setShowHR] =
+  useState(false);
 
   const copyNumber = () => {
 
@@ -28,108 +36,238 @@ export default function JobCard({
       onClick={() =>
         setSelectedJob(job)
       }
-      className="bg-white rounded-2xl overflow-hidden shadow-md border border-yellow-200 active:scale-[0.98] transition-all duration-200 cursor-pointer"
+      className="
+        bg-white
+        rounded-2xl
+        shadow-md
+        hover:shadow-xl
+        transition-all
+        duration-300
+        overflow-hidden
+        cursor-pointer
+        flex
+        min-w-full
+        h-[170px]
+        border
+        border-yellow-100
+      "
     >
 
-      <img
-        src={job.companyLogo}
-        alt={job.companyName}
-        className="w-full h-40 sm:h-44 object-cover"
-      />
+      {/* LEFT IMAGE */}
 
-      <div className="p-4">
+      <div className="w-[32%] h-full relative p-1">
 
-        <h2 className="text-lg sm:text-2xl font-bold text-gray-800 leading-tight">
+        <img
+          src={job.companyLogo}
+          alt={job.companyName}
+          className="w-full h-25 object-cover rounded-xl shadow-lg"
+        />
 
-          {job.jobTitle}
+        {/* OPENINGS */}
 
-        </h2>
+        <div className="absolute top-2 left-2 bg-black/70 text-white text-[10px] px-2 py-1 rounded-full">
 
-        <p className="text-gray-500 text-sm mb-3">
-
-          {job.companyName}
-
-        </p>
-
-        <div className="space-y-1 text-sm sm:text-base">
-
-          <p>
-            <strong>Salary:</strong>
-            {" "}
-            {job.salary}
-          </p>
-
-          <p>
-            <strong>Experience:</strong>
-            {" "}
-            {job.experience}
-          </p>
-
-          <p>
-            <strong>Openings:</strong>
-            {" "}
-            {job.numberOfOpenings}
-          </p>
-
-          <p>
-            <strong>Qualification:</strong>
-            {" "}
-            {job.educationQualification}
-          </p>
-
-          <p>
-            <strong>Location:</strong>
-            {" "}
-            {job.location}
-          </p>
+          {job.numberOfOpenings} Openings
 
         </div>
 
-        <p className="text-sm text-gray-600 mt-3 line-clamp-3">
+        {/* LOCATION BUTTON */}
 
-          {job.shortDescription}
+        <a
+          href={job.googleMapLink}
+          target="_blank"
+          rel="noreferrer"
+          onClick={(e) => e.stopPropagation()}
+          className="
+      absolute
+      bottom-3
+      left-2
+      right-2
+      bg-yellow-200
+      hover:bg-yellow-500
+      text-black
+      text-[11px]
+      font-semibold
+      py-2
+      rounded-lg
+      flex
+      items-center
+      justify-center
+      gap-1
+      shadow-md
+    "
+        >
 
-        </p>
+          <MapPin size={12} />
 
-        {job.directApply === "Yes" ? (
+          Location
 
-          <button
-            onClick={(e) => {
+        </a>
 
-              e.stopPropagation();
 
-              copyNumber();
-            }}
-            className="w-full mt-5 bg-green-500 active:bg-green-600 text-white font-bold py-3 rounded-xl flex justify-center items-center gap-2 text-sm sm:text-base"
-          >
+      </div>
 
-            <Phone size={18} />
+      {/* RIGHT CONTENT */}
 
-            {job.hrPhoneNo}
+      <div className="w-[68%] p-3 flex flex-col justify-between">
 
-            <Copy size={18} />
+        {/* TOP */}
 
-          </button>
+        <div>
 
-        ) : (
 
-          <button
-            onClick={(e) => {
 
-              e.stopPropagation();
+          {/* JOB TITLE */}
 
-              handleApply(
-                job.jobTitle
-              );
-            }}
-            className="w-full mt-5 bg-yellow-400 active:bg-yellow-500 text-black font-bold py-3 rounded-xl text-sm sm:text-base"
-          >
+          <h2 className="text-sm font-bold text-slate-800 mt-1 line-clamp-2 leading-tight">
 
-            Apply Now
+            {job.jobTitle}
 
-          </button>
+          </h2>
 
-        )}
+
+
+
+          {/* SALARY */}
+
+          <div className="flex items-center gap-1 mt-2">
+
+            <IndianRupee
+              size={14}
+              className="text-green-600"
+            />
+
+            <p className="text-green-600 text-sm font-bold">
+
+              {job.salary}
+
+            </p>
+
+          </div>
+
+          {/* EXPERIENCE */}
+
+          <div className="flex items-center gap-1 mt-1">
+
+            <Briefcase
+              size={12}
+              className="text-gray-500"
+            />
+
+            <p className="text-[11px] text-gray-500">
+
+              {job.experience} exp
+
+            </p>
+
+          </div>
+
+          {/* LOCATION */}
+
+          <div className="flex items-center gap-2 mt-3">
+
+            <MapPin
+              size={18}
+              className="text-black-50 fill-red-600"
+            />
+
+            <p
+              className="
+      text-sm
+      font-bold
+      text-slate-700
+      tracking-wide
+      line-clamp-1
+    "
+            >
+
+              {job.location}
+
+            </p>
+
+          </div>
+
+        </div>
+
+        {/* BUTTON */}
+
+        {/* BUTTON */}
+
+<div
+  className="mt-3"
+  onClick={(e) =>
+    e.stopPropagation()
+  }
+>
+
+  <button
+
+    onClick={() => {
+
+      // DIRECT APPLY
+
+      if (
+        job.directApply === "Yes"
+      ) {
+
+        navigator.clipboard.writeText(
+          job.hrPhoneNo
+        );
+
+        setShowHR(true);
+
+      } else {
+
+        handleApply(
+          job.jobTitle
+        );
+      }
+    }}
+
+    className={`
+      w-full
+      font-semibold
+      py-2
+      rounded-xl
+      flex
+      items-center
+      justify-center
+      gap-2
+      text-xs
+      transition-all
+      duration-300
+
+      ${
+        showHR
+          ? "bg-blue-500 text-white"
+          : "bg-green-500 text-white"
+      }
+    `}
+  >
+
+    {showHR ? (
+
+      <>
+
+        <Phone size={14} />
+
+        Call HR
+        {" "}
+        {job.hrPhoneNo}
+
+        <Copy size={14} />
+
+      </>
+
+    ) : (
+
+      "Apply"
+
+    )}
+
+  </button>
+
+</div>
 
       </div>
 

@@ -1,3 +1,7 @@
+import company1 from "./assets/images/company1.png";
+import company2 from "./assets/images/company2.png";
+import company3 from "./assets/images/company3.png";
+
 const jobs = [
 
   {
@@ -47,7 +51,7 @@ const jobs = [
     companyName:
       "Work Station",
     companyLogo:
-      "https://images.unsplash.com/photo-1560179707-f14e90ef3623?w=200",
+      company1,
     industryType:
       "Real Estate",
     directApply:
@@ -101,7 +105,7 @@ const jobs = [
     companyName:
       "ABC Properties",
     companyLogo:
-      "https://images.unsplash.com/photo-1560179707-f14e90ef3623?w=200",
+      company2,
     industryType:
       "Real Estate",
     directApply:
@@ -154,7 +158,7 @@ const jobs = [
     companyName:
       "ABC Properties",
     companyLogo:
-      "https://images.unsplash.com/photo-1560179707-f14e90ef3623?w=200",
+      company3,
     industryType:
       "Real Estate",
     directApply:
