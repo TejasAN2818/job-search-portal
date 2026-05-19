@@ -19,6 +19,9 @@ export default function JobCard({
   const [showHR, setShowHR] =
   useState(false);
 
+  const [showPopup, setShowPopup] =
+  useState(false);
+
   const copyNumber = () => {
 
     navigator.clipboard.writeText(
@@ -30,7 +33,40 @@ export default function JobCard({
     );
   };
 
+  const popup = showPopup && (
+
+  <div
+    className="
+      fixed
+      top-5
+      left-1/2
+      -translate-x-1/2
+      bg-green-500
+      text-white
+      px-5
+      py-3
+      rounded-xl
+      shadow-2xl
+      z-50
+      flex
+      items-center
+      gap-2
+      animate-bounce
+    "
+  >
+
+    <Phone size={18} />
+
+    HR Number Copied
+
+  </div>
+
+);
+
   return (
+      <>
+
+    {popup}
 
     <div
       onClick={() =>
@@ -189,7 +225,7 @@ export default function JobCard({
 
         </div>
 
-        {/* BUTTON */}
+        
 
         {/* BUTTON */}
 
@@ -215,6 +251,14 @@ export default function JobCard({
         );
 
         setShowHR(true);
+
+setShowPopup(true);
+
+setTimeout(() => {
+
+  setShowPopup(false);
+
+}, 2000);
 
       } else {
 
@@ -272,5 +316,6 @@ export default function JobCard({
       </div>
 
     </div>
-  );
+  </> 
+);
 }
