@@ -17,57 +17,65 @@ export default function JobCard({
   if (!job) return null;
 
   const [showHR, setShowHR] =
-  useState(false);
+    useState(false);
 
   const [isApplied, setIsApplied] =
-  useState(false);
+    useState(false);
 
-const [popupMessage, setPopupMessage] =
-  useState("");
+  const [isLoading, setIsLoading] =
+    useState(false);
+
+  const [popupMessage, setPopupMessage] =
+    useState("");
 
 
   const popup = popupMessage && (
 
-  <div
-    className="
-      fixed
-      top-5
-      left-1/2
-      -translate-x-1/2
-      bg-green-500
-      text-white
-      px-6
-      py-4
-      rounded-2xl
-      shadow-2xl
-      z-50
-      flex
-      items-center
-      gap-3
-      animate-bounce
-      text-sm
-      font-semibold
-    "
-  >
+    <div
+   className="
+  fixed
+  top-4
+  left-1/2
+  -translate-x-1/2
+  w-[90%]
+  max-w-[420px]
+  bg-green-500
+  text-white
+  px-5
+  py-4
+  rounded-2xl
+  shadow-2xl
+  z-[9999]
+  flex
+  items-center
+  justify-center
+  gap-3
+  text-center
+  text-sm
+  font-semibold
+  leading-5
+  animate-[slideDown_0.3s_ease]
+"
+    >
 
-    <Phone size={20} />
+      <Phone size={20} />
 
-    {popupMessage}
+      {popupMessage}
 
-  </div>
+    </div>
 
-);
+  );
 
   return (
-      <>
+    <>
 
-    {popup}
+      {popup}
 
-    <div
-      onClick={() =>
-        setSelectedJob(job)
-      }
-      className="
+      <div
+        onClick={() =>
+          setSelectedJob(job)
+        }
+        className="
         bg-white
         rounded-2xl
         shadow-md
@@ -82,34 +90,34 @@ const [popupMessage, setPopupMessage] =
         border
         border-yellow-100
       "
-    >
+      >
 
-      {/* LEFT IMAGE */}
+        {/* LEFT IMAGE */}
 
-      <div className="w-[32%] h-full relative p-1">
+        <div className="w-[32%] h-full relative p-1">
 
-        <img
-          src={job.companyLogo}
-          alt={job.companyName}
-          className="w-full h-25 object-cover rounded-xl shadow-lg"
-        />
+          <img
+            src={job.companyLogo}
+            alt={job.companyName}
+            className="w-full h-25 object-cover rounded-xl shadow-lg"
+          />
 
-        {/* OPENINGS */}
+          {/* OPENINGS */}
 
-        <div className="absolute top-2 left-2 bg-black/70 text-white text-[10px] px-2 py-1 rounded-full">
+          <div className="absolute top-2 left-2 bg-black/70 text-white text-[10px] px-2 py-1 rounded-full">
 
-          {job.numberOfOpenings} Openings
+            {job.numberOfOpenings} Openings
 
-        </div>
+          </div>
 
-        {/* LOCATION BUTTON */}
+          {/* LOCATION BUTTON */}
 
-        <a
-          href={job.googleMapLink}
-          target="_blank"
-          rel="noreferrer"
-          onClick={(e) => e.stopPropagation()}
-          className="
+          <a
+            href={job.googleMapLink}
+            target="_blank"
+            rel="noreferrer"
+            onClick={(e) => e.stopPropagation()}
+            className="
       absolute
       bottom-3
       left-2
@@ -127,102 +135,102 @@ const [popupMessage, setPopupMessage] =
       gap-1
       shadow-md
     "
-        >
+          >
 
-          <MapPin size={12} />
+            <MapPin size={12} />
 
-          Location
+            Location
 
-        </a>
-
-
-      </div>
-
-      {/* RIGHT CONTENT */}
-
-      <div className="w-[68%] p-3 flex flex-col justify-between">
-
-        {/* TOP */}
-
-        <div>
+          </a>
 
 
+        </div>
 
-          {/* JOB TITLE */}
+        {/* RIGHT CONTENT */}
 
-          <h2 className="text-sm font-bold text-slate-800 mt-1 line-clamp-2 leading-tight">
+        <div className="w-[68%] p-3 flex flex-col justify-between">
 
-            {job.jobTitle}
+          {/* TOP */}
 
-          </h2>
+          <div>
 
 
 
+            {/* JOB TITLE */}
 
-          {/* SALARY */}
+            <h2 className="text-sm font-bold text-slate-800 mt-1 line-clamp-2 leading-tight">
 
-          <div className="flex items-center gap-1 mt-2">
+              {job.jobTitle}
 
-            <IndianRupee
-              size={14}
-              className="text-green-600"
-            />
+            </h2>
 
-            <p className="text-green-600 text-sm font-bold">
 
-              {job.salary}
 
-            </p>
 
-          </div>
+            {/* SALARY */}
 
-          {/* EXPERIENCE */}
+            <div className="flex items-center gap-1 mt-2">
 
-          <div className="flex items-center gap-1 mt-1">
+              <IndianRupee
+                size={14}
+                className="text-green-600"
+              />
 
-            <Briefcase
-              size={12}
-              className="text-gray-500"
-            />
+              <p className="text-green-600 text-sm font-bold">
 
-            <p className="text-[11px] text-gray-500">
+                {job.salary}
 
-              {job.experience} exp
+              </p>
 
-            </p>
+            </div>
 
-          </div>
+            {/* EXPERIENCE */}
 
-          {/* LOCATION */}
+            <div className="flex items-center gap-1 mt-1">
 
-          <div className="flex items-center gap-2 mt-3">
+              <Briefcase
+                size={12}
+                className="text-gray-500"
+              />
 
-            <MapPin
-              size={18}
-              className="text-black-50 fill-red-600"
-            />
+              <p className="text-[11px] text-gray-500">
 
-            <p
-              className="
+                {job.experience} exp
+
+              </p>
+
+            </div>
+
+            {/* LOCATION */}
+
+            <div className="flex items-center gap-2 mt-3">
+
+              <MapPin
+                size={18}
+                className="text-black-50 fill-red-600"
+              />
+
+              <p
+                className="
       text-sm
       font-bold
       text-slate-700
       tracking-wide
       line-clamp-1
     "
-            >
+              >
 
-              {job.location}
+                {job.location}
 
-            </p>
+              </p>
+
+            </div>
 
           </div>
 
-        </div>
 
-        
 
-        {/* BUTTON */}
+          {/* BUTTON */}
 
 <div
   className="mt-3"
@@ -235,48 +243,70 @@ const [popupMessage, setPopupMessage] =
 
     onClick={() => {
 
+      if (
+        isLoading ||
+        isApplied ||
+        showHR
+      ) return;
+
+      setIsLoading(true);
+
       // DIRECT APPLY
 
       if (
         job.directApply === "Yes"
       ) {
 
-        navigator.clipboard.writeText(
-          job.hrPhoneNo
-        );
+        setTimeout(() => {
 
-        setShowHR(true);
+          navigator.clipboard.writeText(
+            job.hrPhoneNo
+          );
 
-setPopupMessage(
-  "HR Number Copied"
-);
+          setShowHR(true);
 
-setTimeout(() => {
+          setIsLoading(false);
 
-  setPopupMessage("");
+          setPopupMessage(
+            "HR Number Copied"
+          );
 
-}, 2000);
+          setTimeout(() => {
+
+            setPopupMessage("");
+
+          }, 2000);
+
+        }, 1000);
 
       } else {
 
-      
+        // NORMAL APPLY
 
-   handleApply(
-  job.jobTitle
-);
+        setTimeout(() => {
 
-setIsApplied(true);
+          handleApply(
+            job.jobTitle
+          );
 
-setPopupMessage(
-  "Application Submitted Successfully. HR Will Contact You Shortly."
-);
+          setIsApplied(true);
 
-setTimeout(() => {
+          setIsLoading(false);
 
-  setPopupMessage("");
+          setPopupMessage(
+            "Application Submitted Successfully. HR Will Contact You Shortly."
+          );
 
-}, 3000);
+          setTimeout(() => {
+
+            setPopupMessage("");
+
+          }, 4000);
+
+        }, 1000);
+
       }
+
     }}
 
     className={`
@@ -292,45 +322,67 @@ setTimeout(() => {
       transition-all
       duration-300
 
-     ${
-  showHR || isApplied
-    ? "bg-blue-500 text-white"
-    : "bg-green-500 text-white"
-}
+      ${
+        isLoading
+          ? "bg-gray-500 text-white"
+          : showHR || isApplied
+          ? "bg-blue-500 text-white"
+          : "bg-green-500 text-white"
+      }
     `}
   >
 
-    {showHR ? (
+    {isLoading ? (
 
-  <>
+      <>
 
-    <Phone size={14} />
+        <div
+          className="
+            w-4
+            h-4
+            border-2
+            border-white
+            border-t-transparent
+            rounded-full
+            animate-spin
+          "
+        />
 
-    Call HR
-    {" "}
-    {job.hrPhoneNo}
+        Please wait...
 
-    <Copy size={14} />
+      </>
 
-  </>
+    ) : showHR ? (
 
-) : isApplied ? (
+      <>
 
-  "Applied"
+        <Phone size={14} />
 
-) : (
+        Call HR
+        {" "}
+        {job.hrPhoneNo}
 
-  "Apply"
+        <Copy size={14} />
 
-)}
+      </>
+
+    ) : isApplied ? (
+
+      "Applied"
+
+    ) : (
+
+      "Apply"
+
+    )}
 
   </button>
 
 </div>
 
-      </div>
+        </div>
 
-    </div>
-  </> 
-);
+      </div>
+    </>
+  );
 }
