@@ -165,6 +165,59 @@ const jobs = [
       "No",
     hrPhoneNo:
       "1234567891",
+  },
+  {
+    id: 4,
+    jobTitle: "Real Estate Sales Manager pro",
+    employmentType: "Full-Time",
+    workMode: "On-site",
+    numberOfOpenings: 5,
+    salary: "₹40,000 - ₹80,000",
+    incentives: "Yes",
+    incentiveDetails: "Sales Commission",
+    experience: "4 Years",
+    educationQualification: "Any Degree",
+    requiredSkills: [
+      "Sales",
+      "CRM",
+      "Communication"
+    ],
+    languagesRequired: [
+      "English",
+      "Kannada"
+    ],
+    location: "Malur",
+    googleMapLink:
+      "https://maps.app.goo.gl/h59Q5ma1UWYzVu826",
+    shortDescription:
+      "Real estate sales manager role.",
+    fullJobDescription:
+      "Manage sales team, handle customer escalations, track targets and improve overall sales performance.",
+    requirements: [
+      "Bike mandatory"
+    ],
+    benefits: [
+      "PF",
+      "Incentives"
+    ],
+    workingDays:
+      "Monday - Saturday",
+    officeTiming:
+      "9 AM - 6 PM",
+    gender:
+      "Any",
+    ageLimit:
+      "21 - 35",
+    companyName:
+      "ABC Properties",
+    companyLogo:
+      company3,
+    industryType:
+      "Real Estate",
+    directApply:
+      "No",
+    hrPhoneNo:
+      "1234567891",
   }
 
 ];

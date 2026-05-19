@@ -12,23 +12,23 @@ import JobDetailsModal from "./components/JobDetailsModal";
 export default function App() {
 
   const [formData, setFormData] =
-  useState(() => {
+    useState(() => {
 
-    const savedData =
-      localStorage.getItem(
-        "workstation-user"
-      );
+      const savedData =
+        localStorage.getItem(
+          "workstation-user"
+        );
 
-    return savedData
-      ? JSON.parse(savedData)
-      : {
+      return savedData
+        ? JSON.parse(savedData)
+        : {
           name: "",
           phone_No: "",
           designation: "",
           location: "",
           gender: ""
         };
-  });
+    });
 
   const [showJobs, setShowJobs] =
     useState(false);
@@ -51,12 +51,12 @@ export default function App() {
 
   useEffect(() => {
 
-  localStorage.setItem(
-    "workstation-user",
-    JSON.stringify(formData)
-  );
+    localStorage.setItem(
+      "workstation-user",
+      JSON.stringify(formData)
+    );
 
-}, [formData]);
+  }, [formData]);
 
   // SAVE TO GOOGLE SHEET
 
@@ -103,193 +103,275 @@ export default function App() {
   // APPLY JOB
 
   const handleApply = (
-  jobTitle
-) => {
+    jobTitle
+  ) => {
 
-  saveToGoogleSheet(jobTitle);
+    saveToGoogleSheet(jobTitle);
 
-};
+  };
 
   return (
 
-  <div className="min-h-screen bg-yellow-50">
+    <div className="min-h-screen bg-yellow-50">
 
-    {/* HEADER */}
+     {/* HEADER */}
 
-    <header className="sticky top-0 z-40 bg-yellow-400 shadow-md px-4 py-4">
+<header
+  className="
+    fixed
+    top-0
+    left-0
+    w-full
+    z-50
+    bg-yellow-400
+    shadow-md
+    px-4
+    py-2
+  "
+>
 
-      <div className="flex items-center justify-between">
+  <div className="flex items-center justify-between">
 
-        <div>
+    {/* LEFT */}
 
-          <h1 className="text-2xl sm:text-4xl font-extrabold text-gray-900">
+    <div>
 
-            Work Station
+      <h1
+        className="
+          text-xl
+          sm:text-3xl
+          font-extrabold
+          text-gray-900
+          leading-tight
+        "
+      >
 
-          </h1>
+        Work Station
 
-          <p className="text-yellow-900 text-xs sm:text-sm mt-1">
+      </h1>
 
-            Find Your Dream Job
+      <p
+        className="
+          text-yellow-900
+          text-[10px]
+          sm:text-xs
+        "
+      >
 
-          </p>
+        Find Your Dream Job
 
-        </div>
-
-      </div>
-
-    </header>
-
-    {/* MAIN */}
-
-    <div className="p-3 sm:p-5">
-
-      {!showJobs ? (
-
-        <form
-          onSubmit={handleSubmit}
-          className="max-w-md mx-auto bg-white border border-yellow-300 rounded-3xl shadow-xl p-5 flex flex-col gap-4"
-        >
-
-          <h2 className="text-xl font-bold text-center text-gray-800 mb-2">
-
-            Job Search Form
-
-          </h2>
-
-          <input
-            type="text"
-            name="name"
-            placeholder="Enter Your Name"
-            value={formData.name}
-            onChange={handleChange}
-            required
-            className="border border-yellow-300 focus:border-yellow-500 rounded-xl p-3 outline-none text-sm"
-          />
-
-          <input
-            type="tel"
-            name="phone_No"
-            placeholder="Enter Phone Number"
-            value={formData.phone_No}
-            onChange={handleChange}
-            required
-            className="border border-yellow-300 focus:border-yellow-500 rounded-xl p-3 outline-none text-sm"
-          />
-
-          <input
-            type="text"
-            name="designation"
-            placeholder="Job Role / Designation"
-            value={formData.designation}
-            onChange={handleChange}
-            className="border border-yellow-300 focus:border-yellow-500 rounded-xl p-3 outline-none text-sm"
-          />
-
-          <input
-            type="text"
-            name="location"
-            placeholder="Preferred Location"
-            value={formData.location}
-            onChange={handleChange}
-            className="border border-yellow-300 focus:border-yellow-500 rounded-xl p-3 outline-none text-sm"
-          />
-
-          <select
-            name="gender"
-            value={formData.gender}
-            onChange={handleChange}
-            className="border border-yellow-300 focus:border-yellow-500 rounded-xl p-3 outline-none text-sm bg-white"
-          >
-
-            <option value="">
-              Select Gender
-            </option>
-
-            <option>
-              Male
-            </option>
-
-            <option>
-              Female
-            </option>
-
-            <option>
-              Other
-            </option>
-
-          </select>
-
-          <button
-            type="submit"
-            className="bg-yellow-400 hover:bg-yellow-500 active:scale-[0.98] transition-all text-black font-bold py-3 rounded-xl shadow-md"
-          >
-
-            Submit
-
-          </button>
-
-        </form>
-
-      ) : (
-
-        <>
-
-          {/* TOP BAR */}
-
-          <div className="flex items-center justify-between mb-4">
-            
-
-            <h2 className="text-lg sm:text-2xl font-bold text-gray-800">
-
-              Available Jobs
-
-            </h2>
-
-            <button
-              onClick={() =>
-                setShowJobs(false)
-              }
-              className="bg-black text-white px-4 py-2 rounded-xl text-sm"
-            >
-
-              Back
-
-            </button>
-
-          </div>
-
-          {/* JOB GRID */}
-
-          <div className="flex flex-col gap-4">
-
-            {jobs.map((job) => (
-
-              <JobCard
-                key={job.id}
-                job={job}
-                handleApply={handleApply}
-                setSelectedJob={setSelectedJob}
-              />
-
-            ))}
-
-          </div>
-
-        </>
-
-      )}
-
-      {/* MODAL */}
-
-      <JobDetailsModal
-  selectedJob={selectedJob}
-  setSelectedJob={setSelectedJob}
-  handleApply={handleApply}
-/>
+      </p>
 
     </div>
 
+    {/* RIGHT BUTTON */}
+
+   <button
+  className="
+    bg-black
+    text-white
+    px-3
+    py-1.5
+    rounded-xl
+    text-[11px]
+    sm:text-xs
+    font-semibold
+    shadow-sm
+    active:scale-95
+    transition-all
+    flex
+    items-center
+    gap-1.5
+  "
+>
+
+  Post Jobs
+
+  <span
+    className="
+      bg-yellow-400
+      text-black
+      px-1.5
+      py-[2px]
+      rounded-md
+      text-[8px]
+      font-bold
+      leading-none
+    "
+  >
+
+    FREE
+
+  </span>
+
+</button>
+
   </div>
-);
+
+</header>
+
+      {/* MAIN */}
+
+
+
+   
+      <div className="pt-[62px] p-3 sm:p-5">
+
+        {!showJobs ? (
+
+          <form
+            onSubmit={handleSubmit}
+            className="max-w-md mx-auto bg-white border border-yellow-300 rounded-3xl shadow-xl p-5 flex flex-col gap-4"
+          >
+
+            <h2 className="text-xl font-bold text-center text-gray-800 mb-2">
+
+              Job Search Form
+
+            </h2>
+
+            <input
+              type="text"
+              name="name"
+              placeholder="Enter Your Name"
+              value={formData.name}
+              onChange={handleChange}
+              required
+              className="border border-yellow-300 focus:border-yellow-500 rounded-xl p-3 outline-none text-sm"
+            />
+
+            <input
+              type="tel"
+              name="phone_No"
+              placeholder="Enter Phone Number"
+              value={formData.phone_No}
+              onChange={handleChange}
+              required
+              className="border border-yellow-300 focus:border-yellow-500 rounded-xl p-3 outline-none text-sm"
+            />
+
+            <input
+              type="text"
+              name="designation"
+              placeholder="Job Role / Designation"
+              value={formData.designation}
+              onChange={handleChange}
+              className="border border-yellow-300 focus:border-yellow-500 rounded-xl p-3 outline-none text-sm"
+            />
+
+            <input
+              type="text"
+              name="location"
+              placeholder="Preferred Location"
+              value={formData.location}
+              onChange={handleChange}
+              className="border border-yellow-300 focus:border-yellow-500 rounded-xl p-3 outline-none text-sm"
+            />
+
+            <select
+              name="gender"
+              value={formData.gender}
+              onChange={handleChange}
+              className="border border-yellow-300 focus:border-yellow-500 rounded-xl p-3 outline-none text-sm bg-white"
+            >
+
+              <option value="">
+                Select Gender
+              </option>
+
+              <option>
+                Male
+              </option>
+
+              <option>
+                Female
+              </option>
+
+              <option>
+                Other
+              </option>
+
+            </select>
+
+            <button
+              type="submit"
+              className="bg-yellow-400 hover:bg-yellow-500 active:scale-[0.98] transition-all text-black font-bold py-3 rounded-xl shadow-md"
+            >
+
+              Submit
+
+            </button>
+
+          </form>
+
+        ) : (
+
+          <>
+
+            {/* TOP BAR */}
+
+            <div className="flex items-center justify-between mb-4">
+
+
+              <h2 className="text-lg sm:text-2xl font-bold text-gray-800">
+
+                Available Jobs
+
+              </h2>
+
+              <button
+                onClick={() =>
+                  setShowJobs(false)
+                }
+               className="
+  bg-gray-200
+  text-gray-700
+  px-4
+  py-1.5
+  rounded-xl
+  text-sm
+  hover:bg-gray-300
+  transition-all
+"
+              >
+
+                Back
+
+              </button>
+
+            </div>
+
+            {/* JOB GRID */}
+
+            <div className="flex flex-col gap-4">
+
+              {jobs.map((job) => (
+
+                <JobCard
+                  key={job.id}
+                  job={job}
+                  handleApply={handleApply}
+                  setSelectedJob={setSelectedJob}
+                />
+
+              ))}
+
+            </div>
+
+          </>
+
+        )}
+
+        {/* MODAL */}
+
+        <JobDetailsModal
+          selectedJob={selectedJob}
+          setSelectedJob={setSelectedJob}
+          handleApply={handleApply}
+        />
+
+      </div>
+
+    </div>
+  );
 }
