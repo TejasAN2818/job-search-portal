@@ -283,9 +283,10 @@ export default function App() {
       {/* MODAL */}
 
       <JobDetailsModal
-        selectedJob={selectedJob}
-        setSelectedJob={setSelectedJob}
-      />
+  selectedJob={selectedJob}
+  setSelectedJob={setSelectedJob}
+  handleApply={handleApply}
+/>
 
     </div>
 

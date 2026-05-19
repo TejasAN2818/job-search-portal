@@ -1,118 +1,643 @@
+import {
+  MapPin,
+  Phone,
+  Copy,
+  Briefcase,
+  IndianRupee,
+  Building2,
+  Clock3,
+  Users
+} from "lucide-react";
+
+import { useState } from "react";
+
 export default function JobDetailsModal({
   selectedJob,
-  setSelectedJob
+  setSelectedJob,
+  handleApply
 }) {
 
   if (!selectedJob) return null;
 
+  const [showHR, setShowHR] =
+    useState(false);
+
+  const [isApplied, setIsApplied] =
+    useState(false);
+
+  const [isLoading, setIsLoading] =
+    useState(false);
+
+  const [popupMessage, setPopupMessage] =
+    useState("");
+
+  const popup = popupMessage && (
+
+    <div
+      className="
+  fixed
+  top-4
+  left-1/2
+  -translate-x-1/2
+  w-[90%]
+  max-w-[420px]
+  bg-green-500
+  text-white
+  px-5
+  py-4
+  rounded-2xl
+  shadow-2xl
+  z-[9999]
+  flex
+  items-center
+  justify-center
+  gap-3
+  text-center
+  text-sm
+  font-semibold
+  leading-5
+  animate-[slideDown_0.3s_ease]
+"
+    >
+
+      <Phone size={20} />
+
+      {popupMessage}
+
+    </div>
+
+  );
+
   return (
 
-    <div className="fixed inset-0 bg-black/60 z-50 flex justify-center items-end sm:items-center">
+    <>
 
-      <div className="bg-white w-full sm:max-w-3xl rounded-t-3xl sm:rounded-2xl overflow-y-auto max-h-[95vh] relative">
+      {popup}
 
-        <button
-          onClick={() =>
-            setSelectedJob(null)
-          }
-          className="absolute top-4 right-4 bg-red-500 text-white px-4 py-2 rounded-lg text-sm"
-        >
+      <div className="fixed inset-0 bg-black/60 z-50 flex justify-center items-end sm:items-center p-2">
 
-          Close
+        <div className="bg-white w-full sm:max-w-3xl rounded-t-3xl sm:rounded-3xl overflow-y-auto max-h-[95vh] relative shadow-2xl">
 
-        </button>
+          {/* FIXED CLOSE BUTTON */}
 
-        <img
-          src={selectedJob.companyLogo}
-          alt=""
-          className="w-full h-52 sm:h-60 object-cover"
-        />
+          <button
+            onClick={() =>
+              setSelectedJob(null)
+            }
+            className="
+              fixed
+              top-4
+              right-4
+              bg-red-500
+              text-white
+              px-4
+              py-2
+              rounded-xl
+              text-sm
+              z-[99999]
+              shadow-xl
+            "
+          >
 
-        <div className="p-5">
+            Close
 
-          <h1 className="text-2xl sm:text-3xl font-bold mb-5">
+          </button>
 
-            {selectedJob.jobTitle}
+          {/* IMAGE SECTION */}
 
-          </h1>
+          <div className="relative h-[200px] overflow-hidden">
 
-          <div className="space-y-3 text-sm sm:text-base">
+            {/* BLUR BACKGROUND */}
 
-            <p>
-              <strong>Company:</strong>
-              {" "}
-              {selectedJob.companyName}
-            </p>
+            <img
+              src={selectedJob.companyLogo}
+              alt=""
+              className="
+                absolute
+                inset-0
+                w-full
+                h-full
+                object-cover
+                blur-3xl
+                scale-125
+                opacity-50
+              "
+            />
 
-            <p>
-              <strong>Salary:</strong>
-              {" "}
-              {selectedJob.salary}
-            </p>
+            {/* ORIGINAL IMAGE */}
 
-            <p>
-              <strong>Experience:</strong>
-              {" "}
-              {selectedJob.experience}
-            </p>
+            <div
+              className="
+                absolute
+                inset-0
+                flex
+                items-center
+                justify-center
+                p-4
+              "
+            >
 
-            <p>
-              <strong>Location:</strong>
-              {" "}
-              {selectedJob.location}
-            </p>
+              <img
+                src={selectedJob.companyLogo}
+                alt=""
+                className="
+                  h-full
+                  aspect-square
+                  object-cover
+                  rounded-3xl
+                  border-4
+                  border-white
+                  shadow-2xl
+                "
+              />
 
-            <p>
-              <strong>Employment Type:</strong>
-              {" "}
-              {selectedJob.employmentType}
-            </p>
+            </div>
 
-            <p>
-              <strong>Work Mode:</strong>
-              {" "}
-              {selectedJob.workMode}
-            </p>
+          </div>
 
-            <p>
-              <strong>Industry:</strong>
-              {" "}
-              {selectedJob.industryType}
-            </p>
+          {/* CONTENT */}
 
-            <p>
-              <strong>Gender:</strong>
-              {" "}
-              {selectedJob.gender}
-            </p>
+          <div className="p-5 space-y-6">
 
-            <p>
-              <strong>Age Limit:</strong>
-              {" "}
-              {selectedJob.ageLimit}
-            </p>
-
-            <p>
-              <strong>Working Days:</strong>
-              {" "}
-              {selectedJob.workingDays}
-            </p>
-
-            <p>
-              <strong>Office Timing:</strong>
-              {" "}
-              {selectedJob.officeTiming}
-            </p>
+            {/* JOB TITLE */}
 
             <div>
 
-              <strong>Description:</strong>
+              <h1 className="text-3xl font-bold text-slate-800">
 
-              <p className="text-gray-700 mt-2 leading-relaxed">
+                {selectedJob.jobTitle}
+
+              </h1>
+
+              {/* LOCATION */}
+
+              <div className="flex items-center gap-2 mt-3">
+
+                <MapPin
+                  size={20}
+                  className="fill-red-500 text-red-500"
+                />
+
+                <p className="text-lg font-semibold text-slate-700">
+
+                  {selectedJob.location}
+
+                </p>
+
+              </div>
+
+            </div>
+
+            {/* SALARY + EXPERIENCE */}
+
+            <div
+              className="
+                bg-yellow-50
+                border
+                border-yellow-200
+                rounded-3xl
+                p-5
+                flex
+                justify-between
+                items-center
+                shadow-sm
+              "
+            >
+
+              {/* SALARY */}
+
+              <div>
+
+                <div className="flex items-center gap-2">
+
+                  <IndianRupee
+                    className="text-green-600"
+                    size={20}
+                  />
+
+                  <p className="text-sm text-gray-500">
+                    Salary
+                  </p>
+
+                </div>
+
+                <p className="font-bold text-xl text-green-600 mt-1">
+
+                  {selectedJob.salary}
+
+                </p>
+
+              </div>
+
+              <div className="w-[1px] h-14 bg-yellow-300" />
+
+              {/* EXPERIENCE */}
+
+              <div>
+
+                <div className="flex items-center gap-2">
+
+                  <Briefcase
+                    className="text-blue-600"
+                    size={20}
+                  />
+
+                  <p className="text-sm text-gray-500">
+                    Experience
+                  </p>
+
+                </div>
+
+                <p className="font-bold text-xl text-slate-700 mt-1">
+
+                  {selectedJob.experience}
+
+                </p>
+
+              </div>
+
+            </div>
+
+            {/* LOCATION + APPLY */}
+
+            <div className="grid grid-cols-2 gap-3">
+
+              {/* LOCATION BUTTON */}
+
+              <a
+                href={selectedJob.googleMapLink}
+                target="_blank"
+                rel="noreferrer"
+                className="
+                  flex
+                  items-center
+                  justify-center
+                  gap-2
+                  bg-yellow-400
+                  hover:bg-yellow-500
+                  text-black
+                  font-bold
+                  py-4
+                  rounded-2xl
+                  shadow-md
+                "
+              >
+
+                <MapPin size={18} />
+
+                Location
+
+              </a>
+
+              {/* APPLY BUTTON */}
+
+              <button
+
+                onClick={() => {
+
+                  if (
+                    isLoading ||
+                    isApplied ||
+                    showHR
+                  ) return;
+
+                  setIsLoading(true);
+
+                  // DIRECT APPLY
+
+                  if (
+                    selectedJob.directApply === "Yes"
+                  ) {
+
+                    setTimeout(() => {
+
+                      navigator.clipboard.writeText(
+                        selectedJob.hrPhoneNo
+                      );
+
+                      setShowHR(true);
+
+                      setIsLoading(false);
+
+                      setPopupMessage(
+                        "HR Number Copied"
+                      );
+
+                      setTimeout(() => {
+
+                        setPopupMessage("");
+
+                      }, 2000);
+
+                    }, 1000);
+
+                  } else {
+
+                    // NORMAL APPLY
+
+                    setTimeout(() => {
+
+                      handleApply(
+                        selectedJob.jobTitle
+                      );
+
+                      setIsApplied(true);
+
+                      setIsLoading(false);
+
+                      setPopupMessage(
+                        "Application Submitted Successfully. HR Will Contact You Shortly."
+                      );
+
+                      setTimeout(() => {
+
+                        setPopupMessage("");
+
+                      }, 4000);
+
+                    }, 1000);
+
+                  }
+
+                }}
+
+                className={`
+                  font-bold
+                  py-4
+                  rounded-2xl
+                  flex
+                  items-center
+                  justify-center
+                  gap-2
+                  text-sm
+                  transition-all
+                  duration-300
+
+                  ${
+                    isLoading
+                      ? "bg-gray-500 text-white"
+                      : showHR || isApplied
+                      ? "bg-blue-500 text-white"
+                      : "bg-green-500 text-white"
+                  }
+                `}
+              >
+
+                {isLoading ? (
+
+                  <>
+
+                    <div
+                      className="
+                        w-5
+                        h-5
+                        border-2
+                        border-white
+                        border-t-transparent
+                        rounded-full
+                        animate-spin
+                      "
+                    />
+
+                    Please wait...
+
+                  </>
+
+                ) : showHR ? (
+
+                  <>
+
+                    <Phone size={18} />
+
+                    HR
+                    {" "}
+                    {selectedJob.hrPhoneNo}
+
+                    <Copy size={18} />
+
+                  </>
+
+                ) : isApplied ? (
+
+                  "Applied"
+
+                ) : (
+
+                  "Apply"
+
+                )}
+
+              </button>
+
+            </div>
+
+            {/* OTHER DETAILS */}
+
+            <div className="space-y-4 text-sm sm:text-base">
+
+              <div className="flex items-center gap-2">
+                <Building2 size={18} />
+                <span>
+                  <strong>Company:</strong>
+                  {" "}
+                  {selectedJob.companyName}
+                </span>
+              </div>
+
+              <div className="flex items-center gap-2">
+                <Users size={18} />
+                <span>
+                  <strong>Openings:</strong>
+                  {" "}
+                  {selectedJob.numberOfOpenings}
+                </span>
+              </div>
+
+              <div className="flex items-center gap-2">
+                <Clock3 size={18} />
+                <span>
+                  <strong>Timing:</strong>
+                  {" "}
+                  {selectedJob.officeTiming}
+                </span>
+              </div>
+
+              <p>
+                <strong>Industry:</strong>
+                {" "}
+                {selectedJob.industryType}
+              </p>
+
+              <p>
+                <strong>Employment Type:</strong>
+                {" "}
+                {selectedJob.employmentType}
+              </p>
+
+              <p>
+                <strong>Work Mode:</strong>
+                {" "}
+                {selectedJob.workMode}
+              </p>
+
+              <p>
+                <strong>Gender:</strong>
+                {" "}
+                {selectedJob.gender}
+              </p>
+
+              <p>
+                <strong>Age Limit:</strong>
+                {" "}
+                {selectedJob.ageLimit}
+              </p>
+
+              <p>
+                <strong>Working Days:</strong>
+                {" "}
+                {selectedJob.workingDays}
+              </p>
+
+              <p>
+                <strong>Qualification:</strong>
+                {" "}
+                {selectedJob.educationQualification}
+              </p>
+
+            </div>
+
+            {/* DESCRIPTION */}
+
+            <div>
+
+              <h2 className="text-xl font-bold mb-3">
+
+                Job Description
+
+              </h2>
+
+              <p className="text-gray-700 leading-relaxed">
 
                 {selectedJob.fullJobDescription}
 
               </p>
+
+            </div>
+
+            {/* SKILLS */}
+
+            <div>
+
+              <h2 className="text-xl font-bold mb-3">
+
+                Skills Required
+
+              </h2>
+
+              <div className="flex flex-wrap gap-2">
+
+                {selectedJob.requiredSkills?.map(
+                  (skill, index) => (
+
+                    <span
+                      key={index}
+                      className="
+                        bg-yellow-100
+                        text-yellow-900
+                        px-3
+                        py-1
+                        rounded-full
+                        text-sm
+                        font-medium
+                      "
+                    >
+
+                      {skill}
+
+                    </span>
+
+                  )
+                )}
+
+              </div>
+
+            </div>
+
+            {/* REQUIREMENTS */}
+
+            <div>
+
+              <h2 className="text-xl font-bold mb-3">
+
+                Requirements
+
+              </h2>
+
+              <div className="flex flex-wrap gap-2">
+
+                {selectedJob.requirements?.map(
+                  (item, index) => (
+
+                    <span
+                      key={index}
+                      className="
+                        bg-red-100
+                        text-red-700
+                        px-3
+                        py-1
+                        rounded-full
+                        text-sm
+                        font-medium
+                      "
+                    >
+
+                      {item}
+
+                    </span>
+
+                  )
+                )}
+
+              </div>
+
+            </div>
+
+            {/* BENEFITS */}
+
+            <div>
+
+              <h2 className="text-xl font-bold mb-3">
+
+                Benefits
+
+              </h2>
+
+              <div className="flex flex-wrap gap-2">
+
+                {selectedJob.benefits?.map(
+                  (item, index) => (
+
+                    <span
+                      key={index}
+                      className="
+                        bg-green-100
+                        text-green-700
+                        px-3
+                        py-1
+                        rounded-full
+                        text-sm
+                        font-medium
+                      "
+                    >
+
+                      {item}
+
+                    </span>
+
+                  )
+                )}
+
+              </div>
 
             </div>
 
@@ -122,6 +647,7 @@ export default function JobDetailsModal({
 
       </div>
 
-    </div>
+    </>
+
   );
 }
