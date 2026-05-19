@@ -19,21 +19,14 @@ export default function JobCard({
   const [showHR, setShowHR] =
   useState(false);
 
-  const [showPopup, setShowPopup] =
+  const [isApplied, setIsApplied] =
   useState(false);
 
-  const copyNumber = () => {
+const [popupMessage, setPopupMessage] =
+  useState("");
 
-    navigator.clipboard.writeText(
-      job.hrPhoneNo
-    );
 
-    alert(
-      `Copied: ${job.hrPhoneNo}`
-    );
-  };
-
-  const popup = showPopup && (
+  const popup = popupMessage && (
 
   <div
     className="
@@ -43,21 +36,23 @@ export default function JobCard({
       -translate-x-1/2
       bg-green-500
       text-white
-      px-5
-      py-3
-      rounded-xl
+      px-6
+      py-4
+      rounded-2xl
       shadow-2xl
       z-50
       flex
       items-center
-      gap-2
+      gap-3
       animate-bounce
+      text-sm
+      font-semibold
     "
   >
 
-    <Phone size={18} />
+    <Phone size={20} />
 
-    HR Number Copied
+    {popupMessage}
 
   </div>
 
@@ -252,19 +247,35 @@ export default function JobCard({
 
         setShowHR(true);
 
-setShowPopup(true);
+setPopupMessage(
+  "HR Number Copied"
+);
 
 setTimeout(() => {
 
-  setShowPopup(false);
+  setPopupMessage("");
 
 }, 2000);
 
       } else {
 
-        handleApply(
-          job.jobTitle
-        );
+      
+
+   handleApply(
+  job.jobTitle
+);
+
+setIsApplied(true);
+
+setPopupMessage(
+  "Application Submitted Successfully. HR Will Contact You Shortly."
+);
+
+setTimeout(() => {
+
+  setPopupMessage("");
+
+}, 3000);
       }
     }}
 
@@ -281,33 +292,37 @@ setTimeout(() => {
       transition-all
       duration-300
 
-      ${
-        showHR
-          ? "bg-blue-500 text-white"
-          : "bg-green-500 text-white"
-      }
+     ${
+  showHR || isApplied
+    ? "bg-blue-500 text-white"
+    : "bg-green-500 text-white"
+}
     `}
   >
 
     {showHR ? (
 
-      <>
+  <>
 
-        <Phone size={14} />
+    <Phone size={14} />
 
-        Call HR
-        {" "}
-        {job.hrPhoneNo}
+    Call HR
+    {" "}
+    {job.hrPhoneNo}
 
-        <Copy size={14} />
+    <Copy size={14} />
 
-      </>
+  </>
 
-    ) : (
+) : isApplied ? (
 
-      "Apply"
+  "Applied"
 
-    )}
+) : (
+
+  "Apply"
+
+)}
 
   </button>
 

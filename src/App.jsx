@@ -80,15 +80,12 @@ export default function App() {
   // APPLY JOB
 
   const handleApply = (
-    jobTitle
-  ) => {
+  jobTitle
+) => {
 
-    saveToGoogleSheet(jobTitle);
+  saveToGoogleSheet(jobTitle);
 
-    alert(
-      "Application Submitted Successfully!"
-    );
-  };
+};
 
   return (
 
