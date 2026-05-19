@@ -1,4 +1,7 @@
-import { useState } from "react";
+import {
+  useState,
+  useEffect
+} from "react";
 
 import jobs from "./jobsData";
 
@@ -8,12 +11,23 @@ import JobDetailsModal from "./components/JobDetailsModal";
 
 export default function App() {
 
-  const [formData, setFormData] = useState({
-    name: "",
-    phone_No: "",
-    designation: "",
-    location: "",
-    gender: ""
+  const [formData, setFormData] =
+  useState(() => {
+
+    const savedData =
+      localStorage.getItem(
+        "workstation-user"
+      );
+
+    return savedData
+      ? JSON.parse(savedData)
+      : {
+          name: "",
+          phone_No: "",
+          designation: "",
+          location: "",
+          gender: ""
+        };
   });
 
   const [showJobs, setShowJobs] =
@@ -34,6 +48,15 @@ export default function App() {
       [e.target.name]: e.target.value
     });
   };
+
+  useEffect(() => {
+
+  localStorage.setItem(
+    "workstation-user",
+    JSON.stringify(formData)
+  );
+
+}, [formData]);
 
   // SAVE TO GOOGLE SHEET
 
@@ -202,7 +225,7 @@ export default function App() {
             className="bg-yellow-400 hover:bg-yellow-500 active:scale-[0.98] transition-all text-black font-bold py-3 rounded-xl shadow-md"
           >
 
-            Search Jobs
+            Submit
 
           </button>
 
