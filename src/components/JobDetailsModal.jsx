@@ -74,9 +74,36 @@ export default function JobDetailsModal({
 
       {popup}
 
-      <div className="fixed inset-0 bg-black/60 z-50 flex justify-center items-end sm:items-center p-2">
 
-        <div className="bg-white w-full sm:max-w-3xl rounded-t-3xl sm:rounded-3xl overflow-y-auto max-h-[95vh] relative shadow-2xl">
+      <div
+  className="
+    fixed
+    inset-0
+    bg-black/60
+    z-50
+    flex
+    justify-center
+    items-center
+    p-2
+    sm:p-4
+    overflow-y-auto
+  "
+>
+
+        <div
+  className="
+    bg-white
+    w-full
+    max-w-3xl
+    rounded-3xl
+    overflow-y-auto
+    overflow-x-hidden
+    max-h-[92vh]
+    relative
+    shadow-2xl
+    my-auto
+  "
+>
 
           {/* FIXED CLOSE BUTTON */}
 
@@ -85,7 +112,7 @@ export default function JobDetailsModal({
               setSelectedJob(null)
             }
             className="
-              fixed
+               absolute
               top-4
               right-4
               bg-red-500
@@ -105,7 +132,7 @@ export default function JobDetailsModal({
 
           {/* IMAGE SECTION */}
 
-          <div className="relative h-[200px] overflow-hidden">
+          <div className="relative h-[220px] sm:h-[300px] overflow-hidden rounded-t-3xl">
 
             {/* BLUR BACKGROUND */}
 
@@ -260,7 +287,7 @@ export default function JobDetailsModal({
 
             {/* LOCATION + APPLY */}
 
-            <div className="grid grid-cols-2 gap-3">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
 
               {/* LOCATION BUTTON */}
 
