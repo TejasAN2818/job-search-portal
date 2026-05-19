@@ -60,7 +60,7 @@ export default function JobDetailsModal({
 "
     >
 
-      <Phone size={20} />
+      <Phone size={15} />
 
       {popupMessage}
 
@@ -76,7 +76,7 @@ export default function JobDetailsModal({
 
 
       <div
-  className="
+        className="
     fixed
     inset-0
     bg-black/60
@@ -88,22 +88,22 @@ export default function JobDetailsModal({
     sm:p-4
     overflow-y-auto
   "
->
+      >
 
         <div
-  className="
+          className="
     bg-white
     w-full
     max-w-3xl
     rounded-3xl
     overflow-y-auto
     overflow-x-hidden
-    max-h-[92vh]
+    max-h-[82vh]
     relative
     shadow-2xl
     my-auto
   "
->
+        >
 
           {/* FIXED CLOSE BUTTON */}
 
@@ -112,8 +112,8 @@ export default function JobDetailsModal({
               setSelectedJob(null)
             }
             className="
-               absolute
-              top-4
+               fixed
+              top-10
               right-4
               bg-red-500
               text-white
@@ -219,36 +219,49 @@ export default function JobDetailsModal({
 
             <div
               className="
-                bg-yellow-50
-                border
-                border-yellow-200
-                rounded-3xl
-                p-5
-                flex
-                justify-between
-                items-center
-                shadow-sm
-              "
+    bg-yellow-50
+    border
+    border-yellow-200
+    rounded-2xl
+    px-4
+    py-3
+    flex
+    items-center
+    justify-between
+    shadow-sm
+    gap-3
+  "
             >
 
               {/* SALARY */}
 
-              <div>
+              <div className="flex-1">
 
-                <div className="flex items-center gap-2">
+                <div className="flex items-center gap-1">
 
                   <IndianRupee
                     className="text-green-600"
-                    size={20}
+                    size={16}
                   />
 
-                  <p className="text-sm text-gray-500">
+                  <p className="text-[11px] text-gray-500 font-medium">
+
                     Salary
+
                   </p>
 
                 </div>
 
-                <p className="font-bold text-xl text-green-600 mt-1">
+                <p
+                  className="
+        font-bold
+        text-sm
+        sm:text-lg
+        text-green-600
+        mt-1
+        leading-tight
+      "
+                >
 
                   {selectedJob.salary}
 
@@ -256,26 +269,39 @@ export default function JobDetailsModal({
 
               </div>
 
-              <div className="w-[1px] h-14 bg-yellow-300" />
+              {/* DIVIDER */}
+
+              <div className="w-[1px] h-10 bg-yellow-300" />
 
               {/* EXPERIENCE */}
 
-              <div>
+              <div className="flex-1">
 
-                <div className="flex items-center gap-2">
+                <div className="flex items-center gap-1">
 
                   <Briefcase
                     className="text-blue-600"
-                    size={20}
+                    size={16}
                   />
 
-                  <p className="text-sm text-gray-500">
+                  <p className="text-[11px] text-gray-500 font-medium">
+
                     Experience
+
                   </p>
 
                 </div>
 
-                <p className="font-bold text-xl text-slate-700 mt-1">
+                <p
+                  className="
+        font-bold
+        text-sm
+        sm:text-lg
+        text-slate-700
+        mt-1
+        leading-tight
+      "
+                >
 
                   {selectedJob.experience}
 
@@ -287,7 +313,8 @@ export default function JobDetailsModal({
 
             {/* LOCATION + APPLY */}
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+
+            <div className="grid grid-cols-2 gap-2">
 
               {/* LOCATION BUTTON */}
 
@@ -304,13 +331,15 @@ export default function JobDetailsModal({
                   hover:bg-yellow-500
                   text-black
                   font-bold
-                  py-4
+                  py-2.5
                   rounded-2xl
                   shadow-md
+                  text-xs
+                  
                 "
               >
 
-                <MapPin size={18} />
+                <MapPin size={15} />
 
                 Location
 
@@ -390,20 +419,19 @@ export default function JobDetailsModal({
 
                 className={`
                   font-bold
-                  py-4
+                  py-2.5
                   rounded-2xl
                   flex
                   items-center
                   justify-center
                   gap-2
-                  text-sm
+                  text-xs
                   transition-all
                   duration-300
 
-                  ${
-                    isLoading
-                      ? "bg-gray-500 text-white"
-                      : showHR || isApplied
+                  ${isLoading
+                    ? "bg-gray-500 text-white"
+                    : showHR || isApplied
                       ? "bg-blue-500 text-white"
                       : "bg-green-500 text-white"
                   }
@@ -434,7 +462,7 @@ export default function JobDetailsModal({
 
                   <>
 
-                    <Phone size={18} />
+                    <Phone size={15} />
 
                     HR
                     {" "}
