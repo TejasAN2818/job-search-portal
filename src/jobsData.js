@@ -25,7 +25,7 @@ const jobs = [
     ],
     location: "Whitefield ,Marathahalli",
     googleMapLink:
-      "N A",
+      "https://maps.app.goo.gl/fV42S3ZKSfniPo996?g_st=ac",
     shortDescription:
       "N A",
     fullJobDescription:
