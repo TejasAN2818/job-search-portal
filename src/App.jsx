@@ -3,7 +3,7 @@ import {
   useEffect
 } from "react";
 
-import { Analytics } from "@vercel/analytics/next"
+import { Analytics } from "@vercel/analytics/react";
 
 import jobs from "./jobsData";
 
@@ -391,6 +391,10 @@ export default function App() {
 
       </div>
 
+       <Analytics />
+
     </div>
+
+    
   );
 }
