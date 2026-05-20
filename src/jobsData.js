@@ -1,61 +1,60 @@
 import company1 from "./assets/images/company1.png";
 import company2 from "./assets/images/company2.png";
 import company3 from "./assets/images/company3.png";
+import company3 from "./assets/images/phonepe.png";
 
 const jobs = [
 
   {
     id: 1,
-    jobTitle: "Pre Sales Executive",
+    jobTitle: "Business development associate",
     employmentType: "Full-Time",
-    workMode: "On-site",
-    numberOfOpenings: 10,
-    salary: "₹16,000 - ₹20,000",
-    incentives: "Yes",
-    incentiveDetails: "Performance Bonus",
+    workMode: "Field sales and service",
+    numberOfOpenings: 50,
+    salary: "₹22,500 - ₹26,500",
+    incentives: "upto 25000",
+    incentiveDetails: "Explain in interview time",
     experience: "0 - 1 Years",
-    educationQualification: "PUC / Any Degree",
+    educationQualification: "12th above or ITI  or deploma",
     requiredSkills: [
       "Communication",
       "Sales",
-      "Lead Handling"
+      "Filed sales and service"
     ],
     languagesRequired: [
       "Kannada",
-      "English"
+      "+ any other"
     ],
-    location: "Dommasandra",
+    location: "Whitefield ,Marathahalli",
     googleMapLink:
-      "https://maps.app.goo.gl/ZFruUtMCEQRfmK497",
+      "N A",
     shortDescription:
-      "Pre sales executive role for handling customer leads.",
+      "N A",
     fullJobDescription:
-      "Handle inbound leads, explain project details, schedule site visits and coordinate with sales team.",
+      "N A",
     requirements: [
-      "Good communication skills",
-      "Basic computer knowledge"
+      "Bike"
     ],
     benefits: [
-      "PF",
       "Incentives",
       "Growth Opportunities"
     ],
     workingDays:
-      "Monday - Saturday",
+      "Monday - Saturday ( 6 days )",
     officeTiming:
       "9 AM - 6 PM",
     gender:
       "Any",
     ageLimit:
-      "18 - 30",
+      "18+",
     companyName:
-      "Work Station",
+      "Phonepe",
     companyLogo:
-      company1,
+      phonepe.png,
     industryType:
-      "Real Estate",
+      "sales",
     directApply:
-      "Yes",
+      "No",
     hrPhoneNo:
       "1234567891",
   },
@@ -69,7 +68,7 @@ const jobs = [
     incentives: "Yes",
     incentiveDetails: "Sales Commission",
     experience: "1 - 2 Years",
-    educationQualification: "Any Degree",
+    educationQualification: "12 th",
     requiredSkills: [
       "Sales",
       "CRM",
@@ -87,29 +86,27 @@ const jobs = [
     fullJobDescription:
       "Handle customer meetings, explain projects, manage sales pipeline and close deals.",
     requirements: [
-      "Bike mandatory",
       "Good communication"
     ],
     benefits: [
-      "PF",
       "Incentives"
     ],
     workingDays:
-      "Monday - Saturday",
+      "6 days",
     officeTiming:
       "9 AM - 6 PM",
     gender:
       "Any",
     ageLimit:
-      "21 - 35",
+      "18+",
     companyName:
-      "ABC Properties",
+      "South India Properties",
     companyLogo:
-      company2,
+      company1,
     industryType:
       "Real Estate",
     directApply:
-      "Yes",
+      "No",
     hrPhoneNo:
       "1234567891",
   },
@@ -122,7 +119,7 @@ const jobs = [
     salary: "₹40,000 - ₹80,000",
     incentives: "Yes",
     incentiveDetails: "Sales Commission",
-    experience: "4 Years",
+    experience: "1-8 Years",
     educationQualification: "Any Degree",
     requiredSkills: [
       "Sales",
@@ -141,24 +138,23 @@ const jobs = [
     fullJobDescription:
       "Manage sales team, handle customer escalations, track targets and improve overall sales performance.",
     requirements: [
-      "Bike mandatory"
+      "N A"
     ],
     benefits: [
-      "PF",
       "Incentives"
     ],
     workingDays:
-      "Monday - Saturday",
+      "6 days",
     officeTiming:
-      "9 AM - 6 PM",
+      "10:00 AM - 6:30 PM",
     gender:
       "Any",
     ageLimit:
-      "21 - 35",
+      "18+",
     companyName:
-      "ABC Properties",
+      "South india Properties",
     companyLogo:
-      company3,
+      company1,
     industryType:
       "Real Estate",
     directApply:
@@ -168,50 +164,51 @@ const jobs = [
   },
   {
     id: 4,
-    jobTitle: "Real Estate Sales Manager pro",
+    jobTitle: "Pre Sales Executive",
     employmentType: "Full-Time",
     workMode: "On-site",
-    numberOfOpenings: 5,
-    salary: "₹40,000 - ₹80,000",
+    numberOfOpenings: 10,
+    salary: "₹16,000 - ₹20,000",
     incentives: "Yes",
-    incentiveDetails: "Sales Commission",
-    experience: "4 Years",
-    educationQualification: "Any Degree",
+    incentiveDetails: "Performance Bonus",
+    experience: "0 - 1 Years",
+    educationQualification: "10th / PUC / Any Degree",
     requiredSkills: [
+      "Communication",
       "Sales",
-      "CRM",
-      "Communication"
+      "Lead Handling"
     ],
     languagesRequired: [
-      "English",
-      "Kannada"
+      "Kannada",
+      "English"
     ],
-    location: "Malur",
+    location: "Dommasandra, Sarjapur",
     googleMapLink:
-      "https://maps.app.goo.gl/h59Q5ma1UWYzVu826",
+      "https://maps.app.goo.gl/ZFruUtMCEQRfmK497",
     shortDescription:
-      "Real estate sales manager role.",
+      "Pre sales executive role for handling customer leads.",
     fullJobDescription:
-      "Manage sales team, handle customer escalations, track targets and improve overall sales performance.",
+      "Handle inbound leads, explain project details, schedule site visits and coordinate with sales team.",
     requirements: [
-      "Bike mandatory"
+      "Good communication skills",
+      "Basic computer knowledge"
     ],
     benefits: [
-      "PF",
-      "Incentives"
+      "Incentives",
+      "Growth Opportunities"
     ],
     workingDays:
-      "Monday - Saturday",
+      "6 days",
     officeTiming:
-      "9 AM - 6 PM",
+      "10:00 AM - 6:30 PM",
     gender:
-      "Any",
+      "Female only",
     ageLimit:
-      "21 - 35",
+      "18+",
     companyName:
-      "ABC Properties",
+      "South India Properites",
     companyLogo:
-      company3,
+      company1,
     industryType:
       "Real Estate",
     directApply:
@@ -219,6 +216,7 @@ const jobs = [
     hrPhoneNo:
       "1234567891",
   }
+  
 
 ];
 
