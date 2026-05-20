@@ -32,7 +32,7 @@ export default function JobCard({
   const popup = popupMessage && (
 
     <div
-   className="
+      className="
   fixed
   top-4
   left-1/2
@@ -158,7 +158,21 @@ export default function JobCard({
 
             {/* JOB TITLE */}
 
-            <h2 className="text-sm font-bold text-slate-800 mt-1 line-clamp-2 leading-tight">
+            <h2
+              className={`
+    font-bold
+    text-slate-800
+    mt-1
+    leading-tight
+    line-clamp-2
+    break-words
+
+    ${job.jobTitle.length > 29
+                  ? "text-[12px]"
+                  : "text-sm"
+                }
+  `}
+            >
 
               {job.jobTitle}
 
@@ -232,84 +246,84 @@ export default function JobCard({
 
           {/* BUTTON */}
 
-<div
-  className="mt-3"
-  onClick={(e) =>
-    e.stopPropagation()
-  }
->
+          <div
+            className="mt-3"
+            onClick={(e) =>
+              e.stopPropagation()
+            }
+          >
 
-  <button
+            <button
 
-    onClick={() => {
+              onClick={() => {
 
-      if (
-        isLoading ||
-        isApplied ||
-        showHR
-      ) return;
+                if (
+                  isLoading ||
+                  isApplied ||
+                  showHR
+                ) return;
 
-      setIsLoading(true);
+                setIsLoading(true);
 
-      // DIRECT APPLY
+                // DIRECT APPLY
 
-      if (
-        job.directApply === "Yes"
-      ) {
+                if (
+                  job.directApply === "Yes"
+                ) {
 
-        setTimeout(() => {
+                  setTimeout(() => {
 
-          navigator.clipboard.writeText(
-            job.hrPhoneNo
-          );
+                    navigator.clipboard.writeText(
+                      job.hrPhoneNo
+                    );
 
-          setShowHR(true);
+                    setShowHR(true);
 
-          setIsLoading(false);
+                    setIsLoading(false);
 
-          setPopupMessage(
-            "HR Number Copied"
-          );
+                    setPopupMessage(
+                      "HR Number Copied"
+                    );
 
-          setTimeout(() => {
+                    setTimeout(() => {
 
-            setPopupMessage("");
+                      setPopupMessage("");
 
-          }, 2000);
+                    }, 2000);
 
-        }, 1000);
+                  }, 1000);
 
-      } else {
+                } else {
 
-        // NORMAL APPLY
+                  // NORMAL APPLY
 
-        setTimeout(() => {
+                  setTimeout(() => {
 
-          handleApply(
-            job.jobTitle
-          );
+                    handleApply(
+                      job.jobTitle
+                    );
 
-          setIsApplied(true);
+                    setIsApplied(true);
 
-          setIsLoading(false);
+                    setIsLoading(false);
 
-          setPopupMessage(
-            "Application Submitted Successfully. HR Will Contact You Shortly."
-          );
+                    setPopupMessage(
+                      "Application Submitted Successfully. HR Will Contact You Shortly."
+                    );
 
-          setTimeout(() => {
+                    setTimeout(() => {
 
-            setPopupMessage("");
+                      setPopupMessage("");
 
-          }, 4000);
+                    }, 4000);
 
-        }, 1000);
+                  }, 1000);
 
-      }
+                }
 
-    }}
+              }}
 
-    className={`
+              className={`
       w-full
       font-semibold
       py-2
@@ -322,22 +336,21 @@ export default function JobCard({
       transition-all
       duration-300
 
-      ${
-        isLoading
-          ? "bg-gray-500 text-white"
-          : showHR || isApplied
-          ? "bg-blue-500 text-white"
-          : "bg-green-500 text-white"
-      }
+      ${isLoading
+                  ? "bg-gray-500 text-white"
+                  : showHR || isApplied
+                    ? "bg-blue-500 text-white"
+                    : "bg-green-500 text-white"
+                }
     `}
-  >
+            >
 
-    {isLoading ? (
+              {isLoading ? (
 
-      <>
+                <>
 
-        <div
-          className="
+                  <div
+                    className="
             w-4
             h-4
             border-2
@@ -346,39 +359,39 @@ export default function JobCard({
             rounded-full
             animate-spin
           "
-        />
+                  />
 
-        Please wait...
+                  Please wait...
 
-      </>
+                </>
 
-    ) : showHR ? (
+              ) : showHR ? (
 
-      <>
+                <>
 
-        <Phone size={14} />
+                  <Phone size={14} />
 
-        Call HR
-        {" "}
-        {job.hrPhoneNo}
+                  Call HR
+                  {" "}
+                  {job.hrPhoneNo}
 
-        <Copy size={14} />
+                  <Copy size={14} />
 
-      </>
+                </>
 
-    ) : isApplied ? (
+              ) : isApplied ? (
 
-      "Applied"
+                "Applied"
 
-    ) : (
+              ) : (
 
-      "Apply"
+                "Apply"
 
-    )}
+              )}
 
-  </button>
+            </button>
 
-</div>
+          </div>
 
         </div>
 

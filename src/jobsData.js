@@ -1,7 +1,5 @@
 import company1 from "./assets/images/company1.png";
-import company2 from "./assets/images/company2.png";
-import company3 from "./assets/images/company3.png";
-import company3 from "./assets/images/phonepe.png";
+import phonepe from "./assets/images/phonepe.png";
 
 const jobs = [
 
@@ -50,7 +48,7 @@ const jobs = [
     companyName:
       "Phonepe",
     companyLogo:
-      phonepe.png,
+      phonepe,
     industryType:
       "sales",
     directApply:
