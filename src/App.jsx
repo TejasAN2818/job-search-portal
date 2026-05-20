@@ -3,6 +3,8 @@ import {
   useEffect
 } from "react";
 
+import { Analytics } from "@vercel/analytics/next"
+
 import jobs from "./jobsData";
 
 import JobCard from "./components/JobCard";
