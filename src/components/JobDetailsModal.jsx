@@ -346,143 +346,167 @@ export default function JobDetailsModal({
               </a>
 
               {/* APPLY BUTTON */}
+{/* APPLY BUTTON */}
 
-              <button
+<button
 
-                onClick={() => {
+  onClick={() => {
 
-                  if (
-                    isLoading ||
-                    isApplied ||
-                    showHR
-                  ) return;
+    // PREVENT MULTIPLE CLICKS
 
-                  setIsLoading(true);
+    if (
+      isLoading ||
+      isApplied
+    ) return;
 
-                  // DIRECT APPLY
+    // COPY AGAIN IF HR ALREADY SHOWING
 
-                  if (
-                    selectedJob.directApply === "Yes"
-                  ) {
+    if (showHR) {
 
-                    setTimeout(() => {
+      navigator.clipboard.writeText(
+        selectedJob.hrPhoneNo
+      );
 
-                      navigator.clipboard.writeText(
-                        selectedJob.hrPhoneNo
-                      );
+      setPopupMessage(
+        "HR Number Copied"
+      );
 
-                      setShowHR(true);
+      setTimeout(() => {
 
-                      setIsLoading(false);
+        setPopupMessage("");
 
-                      setPopupMessage(
-                        "HR Number Copied"
-                      );
+      }, 2000);
 
-                      setTimeout(() => {
+      return;
+    }
 
-                        setPopupMessage("");
+    setIsLoading(true);
 
-                      }, 2000);
+    // DIRECT APPLY
 
-                    }, 1000);
+    if (
+      selectedJob.directApply === "Yes"
+    ) {
 
-                  } else {
+      setTimeout(() => {
 
-                    // NORMAL APPLY
+        navigator.clipboard.writeText(
+          selectedJob.hrPhoneNo
+        );
 
-                    setTimeout(() => {
+        setShowHR(true);
 
-                      handleApply(
-                        selectedJob.jobTitle
-                      );
+        setIsLoading(false);
 
-                      setIsApplied(true);
+        setPopupMessage(
+          "HR Number Copied"
+        );
 
-                      setIsLoading(false);
+        setTimeout(() => {
 
-                      setPopupMessage(
-                        "Application Submitted Successfully. HR Will Contact You Shortly."
-                      );
+          setPopupMessage("");
 
-                      setTimeout(() => {
+        }, 2000);
 
-                        setPopupMessage("");
+      }, 1000);
 
-                      }, 4000);
+    } else {
 
-                    }, 1000);
+      // NORMAL APPLY
 
-                  }
+      setTimeout(() => {
 
-                }}
+        handleApply(
+          selectedJob.jobTitle
+        );
 
-                className={`
-                  font-bold
-                  py-2.5
-                  rounded-2xl
-                  flex
-                  items-center
-                  justify-center
-                  gap-2
-                  text-xs
-                  transition-all
-                  duration-300
+        setIsApplied(true);
 
-                  ${isLoading
-                    ? "bg-gray-500 text-white"
-                    : showHR || isApplied
-                      ? "bg-blue-500 text-white"
-                      : "bg-green-500 text-white"
-                  }
-                `}
-              >
+        setIsLoading(false);
 
-                {isLoading ? (
+        setPopupMessage(
+          "Application Submitted Successfully. HR Will Contact You Shortly."
+        );
 
-                  <>
+        setTimeout(() => {
 
-                    <div
-                      className="
-                        w-5
-                        h-5
-                        border-2
-                        border-white
-                        border-t-transparent
-                        rounded-full
-                        animate-spin
-                      "
-                    />
+          setPopupMessage("");
 
-                    Please wait...
+        }, 4000);
 
-                  </>
+      }, 1000);
 
-                ) : showHR ? (
+    }
 
-                  <>
+  }}
 
-                    <Phone size={15} />
+  className={`
+    font-bold
+    py-2.5
+    rounded-2xl
+    flex
+    items-center
+    justify-center
+    gap-2
+    text-xs
+    transition-all
+    duration-300
 
-                    HR
-                    {" "}
-                    {selectedJob.hrPhoneNo}
+    ${
+      isLoading
+        ? "bg-gray-500 text-white"
+        : showHR || isApplied
+        ? "bg-blue-500 text-white"
+        : "bg-green-500 text-white"
+    }
+  `}
+>
 
-                    <Copy size={18} />
+  {isLoading ? (
 
-                  </>
+    <>
 
-                ) : isApplied ? (
+      <div
+        className="
+          w-5
+          h-5
+          border-2
+          border-white
+          border-t-transparent
+          rounded-full
+          animate-spin
+        "
+      />
 
-                  "Applied"
+      Please wait...
 
-                ) : (
+    </>
 
-                  "Apply"
+  ) : showHR ? (
 
-                )}
+    <>
 
-              </button>
+      <Phone size={15} />
+
+      HR
+      {" "}
+      {selectedJob.hrPhoneNo}
+
+      <Copy size={18} />
+
+    </>
+
+  ) : isApplied ? (
+
+    "Applied"
+
+  ) : (
+
+    "Apply"
+
+  )}
+
+</button>
 
             </div>
 

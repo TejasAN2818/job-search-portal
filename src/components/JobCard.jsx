@@ -28,11 +28,10 @@ export default function JobCard({
   const [popupMessage, setPopupMessage] =
     useState("");
 
-
   const popup = popupMessage && (
 
     <div
-      className="
+        className="
   fixed
   top-4
   left-1/2
@@ -67,6 +66,7 @@ export default function JobCard({
   );
 
   return (
+
     <>
 
       {popup}
@@ -76,20 +76,20 @@ export default function JobCard({
           setSelectedJob(job)
         }
         className="
-        bg-white
-        rounded-2xl
-        shadow-md
-        hover:shadow-xl
-        transition-all
-        duration-300
-        overflow-hidden
-        cursor-pointer
-        flex
-        min-w-full
-        h-[170px]
-        border
-        border-yellow-100
-      "
+          bg-white
+          rounded-2xl
+          shadow-md
+          hover:shadow-xl
+          transition-all
+          duration-300
+          overflow-hidden
+          cursor-pointer
+          flex
+          min-w-full
+          h-[170px]
+          border
+          border-yellow-100
+        "
       >
 
         {/* LEFT IMAGE */}
@@ -99,12 +99,30 @@ export default function JobCard({
           <img
             src={job.companyLogo}
             alt={job.companyName}
-            className="w-full h-25 object-cover rounded-xl shadow-lg"
+            className="
+              w-full
+              h-25
+              object-cover
+              rounded-xl
+              shadow-lg
+            "
           />
 
           {/* OPENINGS */}
 
-          <div className="absolute top-1.5 left-1.5 bg-black/70 text-white text-[8px] px-1.5 py-0.5 rounded-full">
+          <div
+            className="
+              absolute
+              top-1.5
+              left-1.5
+              bg-black/70
+              text-white
+              text-[8px]
+              px-1.5
+              py-0.5
+              rounded-full
+            "
+          >
 
             {job.numberOfOpenings} Openings
 
@@ -116,25 +134,27 @@ export default function JobCard({
             href={job.googleMapLink}
             target="_blank"
             rel="noreferrer"
-            onClick={(e) => e.stopPropagation()}
+            onClick={(e) =>
+              e.stopPropagation()
+            }
             className="
-      absolute
-      bottom-3
-      left-2
-      right-2
-      bg-yellow-200
-      hover:bg-yellow-500
-      text-black
-      text-[11px]
-      font-semibold
-      py-2
-      rounded-lg
-      flex
-      items-center
-      justify-center
-      gap-1
-      shadow-md
-    "
+              absolute
+              bottom-3
+              left-2
+              right-2
+              bg-yellow-200
+              hover:bg-yellow-500
+              text-black
+              text-[11px]
+              font-semibold
+              py-2
+              rounded-lg
+              flex
+              items-center
+              justify-center
+              gap-1
+              shadow-md
+            "
           >
 
             <MapPin size={12} />
@@ -143,43 +163,46 @@ export default function JobCard({
 
           </a>
 
-
         </div>
 
         {/* RIGHT CONTENT */}
 
-        <div className="w-[68%] p-3 flex flex-col justify-between">
+        <div
+          className="
+            w-[68%]
+            p-3
+            flex
+            flex-col
+            justify-between
+          "
+        >
 
           {/* TOP */}
 
           <div>
 
-
-
             {/* JOB TITLE */}
 
             <h2
               className={`
-    font-bold
-    text-slate-800
-    mt-1
-    leading-tight
-    line-clamp-2
-    break-words
+                font-bold
+                text-slate-800
+                mt-1
+                leading-tight
+                line-clamp-2
+                break-words
 
-    ${job.jobTitle.length > 29
-                  ? "text-[12px]"
-                  : "text-sm"
+                ${
+                  job.jobTitle.length > 29
+                    ? "text-[12px]"
+                    : "text-sm"
                 }
-  `}
+              `}
             >
 
               {job.jobTitle}
 
             </h2>
-
-
-
 
             {/* SALARY */}
 
@@ -190,7 +213,13 @@ export default function JobCard({
                 className="text-green-600"
               />
 
-              <p className="text-green-600 text-sm font-bold">
+              <p
+                className="
+                  text-green-600
+                  text-sm
+                  font-bold
+                "
+              >
 
                 {job.salary}
 
@@ -207,7 +236,12 @@ export default function JobCard({
                 className="text-gray-500"
               />
 
-              <p className="text-[11px] text-gray-500">
+              <p
+                className="
+                  text-[11px]
+                  text-gray-500
+                "
+              >
 
                 {job.experience} exp
 
@@ -221,17 +255,20 @@ export default function JobCard({
 
               <MapPin
                 size={18}
-                className="text-black-50 fill-red-600"
+                className="
+                  text-black-50
+                  fill-red-600
+                "
               />
 
               <p
                 className="
-      text-sm
-      font-bold
-      text-slate-700
-      tracking-wide
-      line-clamp-1
-    "
+                  text-sm
+                  font-bold
+                  text-slate-700
+                  tracking-wide
+                  line-clamp-1
+                "
               >
 
                 {job.location}
@@ -241,8 +278,6 @@ export default function JobCard({
             </div>
 
           </div>
-
-
 
           {/* BUTTON */}
 
@@ -257,11 +292,33 @@ export default function JobCard({
 
               onClick={() => {
 
+                // PREVENT MULTIPLE CLICKS
+
                 if (
                   isLoading ||
-                  isApplied ||
-                  showHR
+                  isApplied
                 ) return;
+
+                // COPY AGAIN IF HR ALREADY SHOWING
+
+                if (showHR) {
+
+                  navigator.clipboard.writeText(
+                    job.hrPhoneNo
+                  );
+
+                  setPopupMessage(
+                    "HR Number Copied"
+                  );
+
+                  setTimeout(() => {
+
+                    setPopupMessage("");
+
+                  }, 2000);
+
+                  return;
+                }
 
                 setIsLoading(true);
 
@@ -324,25 +381,26 @@ export default function JobCard({
               }}
 
               className={`
-      w-full
-      font-semibold
-      py-2
-      rounded-xl
-      flex
-      items-center
-      justify-center
-      gap-2
-      text-xs
-      transition-all
-      duration-300
+                w-full
+                font-semibold
+                py-2
+                rounded-xl
+                flex
+                items-center
+                justify-center
+                gap-2
+                text-xs
+                transition-all
+                duration-300
 
-      ${isLoading
-                  ? "bg-gray-500 text-white"
-                  : showHR || isApplied
+                ${
+                  isLoading
+                    ? "bg-gray-500 text-white"
+                    : showHR || isApplied
                     ? "bg-blue-500 text-white"
                     : "bg-green-500 text-white"
                 }
-    `}
+              `}
             >
 
               {isLoading ? (
@@ -351,14 +409,14 @@ export default function JobCard({
 
                   <div
                     className="
-            w-4
-            h-4
-            border-2
-            border-white
-            border-t-transparent
-            rounded-full
-            animate-spin
-          "
+                      w-4
+                      h-4
+                      border-2
+                      border-white
+                      border-t-transparent
+                      rounded-full
+                      animate-spin
+                    "
                   />
 
                   Please wait...
@@ -396,6 +454,8 @@ export default function JobCard({
         </div>
 
       </div>
+
     </>
+
   );
 }
