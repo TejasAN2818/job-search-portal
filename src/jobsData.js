@@ -54,7 +54,7 @@ const jobs = [
     directApply:
       "Yes",
     hrPhoneNo:
-      "9845390121",
+      "984 5390 121",
   },
   {
     id: 2,
