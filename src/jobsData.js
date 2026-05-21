@@ -52,9 +52,9 @@ const jobs = [
     industryType:
       "sales",
     directApply:
-      "No",
+      "Yes",
     hrPhoneNo:
-      "1234567891",
+      "9845390121",
   },
   {
     id: 2,
