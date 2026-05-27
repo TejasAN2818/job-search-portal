@@ -1,5 +1,6 @@
 import company1 from "./assets/images/company1.png";
 import phonepe from "./assets/images/phonepe.png";
+import ubity from "./assets/images/ubity.png";
 
 const jobs = [
 
@@ -58,6 +59,57 @@ const jobs = [
   },
   {
     id: 2,
+    jobTitle: "Bussiness Development Associate-",
+    employmentType: "Part-Time",
+    workMode: "Work from Home",
+    numberOfOpenings: 100,
+    salary: "₹15,000",
+    incentives: "Yes",
+    incentiveDetails: "₹10,000",
+    experience: "0 Year",
+    educationQualification: " Bcom, Bba, Bbm, bca, 12th pass",
+    requiredSkills: [
+      "Sales",
+      "Good communication"
+    ],
+    languagesRequired: [
+      "Kannada",
+      "English"
+    ],
+    location: "Work From Home",
+    googleMapLink:
+      "NA",
+    shortDescription:
+      "NA",
+    fullJobDescription:
+      "Ready to make sales & handle Calls.  Salary will be Based on target completion (not fixed)",
+    requirements: [
+      "Mobile"
+    ],
+    benefits: [
+      "Incentives"
+    ],
+    workingDays:
+      "6 days",
+    officeTiming:
+      "4:30 PM - 8:00 PM (or Flexible)",
+    gender:
+      "Any",
+    ageLimit:
+      "18+",
+    companyName:
+      "ubity",
+    companyLogo:
+      ubity,
+    industryType:
+      "Education",
+    directApply:
+      "No",
+    hrPhoneNo:
+      "9513186030",
+  },
+  {
+    id: 3,
     jobTitle: "Real Estate Sales Executive",
     employmentType: "Full-Time",
     workMode: "On-site",
@@ -109,7 +161,7 @@ const jobs = [
       "1234567891",
   },
   {
-    id: 3,
+    id: 4,
     jobTitle: "Real Estate Sales Manager",
     employmentType: "Full-Time",
     workMode: "On-site",
@@ -161,7 +213,7 @@ const jobs = [
       "1234567891",
   },
   {
-    id: 4,
+    id: 5,
     jobTitle: "Pre Sales Executive",
     employmentType: "Full-Time",
     workMode: "On-site",
