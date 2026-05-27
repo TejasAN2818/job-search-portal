@@ -52,7 +52,7 @@ const jobs = [
     industryType:
       "sales",
     directApply:
-      "Yes",
+      "No",
     hrPhoneNo:
       "984 5390 121",
   },
