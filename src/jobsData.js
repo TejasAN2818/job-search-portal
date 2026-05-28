@@ -59,7 +59,7 @@ const jobs = [
   },
   {
     id: 2,
-    jobTitle: "Bussiness Development Associate-",
+    jobTitle: "Tele Sales (BDA)",
     employmentType: "Part-Time",
     workMode: "Work from Home",
     numberOfOpenings: 100,
