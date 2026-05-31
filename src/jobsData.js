@@ -1,11 +1,166 @@
 import company1 from "./assets/images/company1.png";
 import phonepe from "./assets/images/phonepe.png";
 import ubity from "./assets/images/ubity.png";
+import kns_metro_properites_image from "./assets/images/kns_metro_properites_image.png";
+
 
 const jobs = [
 
   {
     id: 1,
+    jobTitle: "Bussiness Development Associate (Ubity)",
+    employmentType: "Part-Time",
+    workMode: "Work from Home",
+    numberOfOpenings: 100,
+    salary: "₹15,000",
+    incentives: "Yes",
+    incentiveDetails: "₹10,000",
+    experience: "0 Year",
+    educationQualification: " Bcom, Bba, Bbm, bca, 12th pass",
+    requiredSkills: [
+      "Sales",
+      "Good communication"
+    ],
+    languagesRequired: [
+      "Kannada",
+      "English"
+    ],
+    location: "Work From Home",
+    googleMapLink:
+      "NA",
+    shortDescription:
+      "NA",
+    fullJobDescription:
+      "Ready to make sales & handle Calls.  Salary will be Based on target completion (not fixed)",
+    requirements: [
+      "Mobile"
+    ],
+    benefits: [
+      "Incentives"
+    ],
+    workingDays:
+      "6 days",
+    officeTiming:
+      "4:30 PM - 8:00 PM (or Flexible)",
+    gender:
+      "Any",
+    ageLimit:
+      "18+",
+    companyName:
+      "ubity",
+    companyLogo:
+      ubity,
+    industryType:
+      "Education",
+    directApply:
+      "No",
+    hrPhoneNo:
+      "9513186030",
+  },
+
+ 
+  {
+    id: 2,
+    jobTitle: "Business development executive (KNS)",
+    employmentType: "Full-Time",
+    workMode: "Office",
+    numberOfOpenings: 150,
+    salary: "₹15,000",
+    incentives: "Yes",
+    incentiveDetails: "Explain in interview",
+    experience: "Fresh & experience",
+    educationQualification: " Bcom, Bba, Bbm, bca, 12th pass, Any",
+    requiredSkills: [
+      "Sales",
+      "Good communication"
+    ],
+    languagesRequired: [
+      "Kannada"
+    ],
+    location: "JP nagar",
+    googleMapLink:
+      "https://maps.app.goo.gl/JLVenqsp3TpWv2EZA?g_st=aw",
+    shortDescription:
+      "NA",
+    fullJobDescription:
+      "NA",
+    requirements: [
+      "NA"
+    ],
+    benefits: [
+      "Incentives"
+    ],
+    workingDays:
+      "6 days",
+    officeTiming:
+      "9:30 AM - 6:30 PM",
+    gender:
+      "Any",
+    ageLimit:
+      "18+",
+    companyName:
+      "KNS metro properties",
+    companyLogo:
+      kns_metro_properites_image,
+    industryType:
+      "Real Estate",
+    directApply:
+      "Yes",
+    hrPhoneNo:
+      "7406935096",
+  },
+  {
+    id: 3,
+    jobTitle: "Business development Team Leader (KNS)",
+    employmentType: "Full-Time",
+    workMode: "Office",
+    numberOfOpenings: 40,
+    salary: "₹25,000",
+    incentives: "Yes",
+    incentiveDetails: "Explain in interview",
+    experience: "Fresh & experience",
+    educationQualification: " Bcom, Bba, Bbm, bca, 12th pass, Any",
+    requiredSkills: [
+      "Sales",
+      "Good communication"
+    ],
+    languagesRequired: [
+      "Kannada"
+    ],
+    location: "JP nagar",
+    googleMapLink:
+      "https://maps.app.goo.gl/JLVenqsp3TpWv2EZA?g_st=aw",
+    shortDescription:
+      "NA",
+    fullJobDescription:
+      "NA",
+    requirements: [
+      "NA"
+    ],
+    benefits: [
+      "Incentives"
+    ],
+    workingDays:
+      "6 days",
+    officeTiming:
+      "9:30 AM - 6:30 PM",
+    gender:
+      "Any",
+    ageLimit:
+      "18+",
+    companyName:
+      "KNS metro properties",
+    companyLogo:
+      kns_metro_properites_image,
+    industryType:
+      "Real Estate",
+    directApply:
+      "Yes",
+    hrPhoneNo:
+      "7406935096",
+  },
+   {
+    id: 4,
     jobTitle: "Business development associate",
     employmentType: "Full-Time",
     workMode: "Field sales and service",
@@ -57,34 +212,34 @@ const jobs = [
     hrPhoneNo:
       "984 5390 121",
   },
+  
   {
-    id: 2,
-    jobTitle: "Tele Sales (BDA)",
-    employmentType: "Part-Time",
-    workMode: "Work from Home",
-    numberOfOpenings: 100,
-    salary: "₹15,000",
+    id: 5,
+    jobTitle: "Business development Manager (KNS)",
+    employmentType: "Full-Time",
+    workMode: "Office",
+    numberOfOpenings: 40,
+    salary: "₹35,000",
     incentives: "Yes",
-    incentiveDetails: "₹10,000",
-    experience: "0 Year",
-    educationQualification: " Bcom, Bba, Bbm, bca, 12th pass",
+    incentiveDetails: "Explain in interview",
+    experience: "Fresh & experience",
+    educationQualification: " Bcom, Bba, Bbm, bca, 12th pass, Any",
     requiredSkills: [
       "Sales",
       "Good communication"
     ],
     languagesRequired: [
-      "Kannada",
-      "English"
+      "Kannada"
     ],
-    location: "Work From Home",
+    location: "JP nagar",
     googleMapLink:
-      "NA",
+      "https://maps.app.goo.gl/JLVenqsp3TpWv2EZA?g_st=aw",
     shortDescription:
       "NA",
     fullJobDescription:
-      "Ready to make sales & handle Calls.  Salary will be Based on target completion (not fixed)",
+      "NA",
     requirements: [
-      "Mobile"
+      "NA"
     ],
     benefits: [
       "Incentives"
@@ -92,24 +247,24 @@ const jobs = [
     workingDays:
       "6 days",
     officeTiming:
-      "4:30 PM - 8:00 PM (or Flexible)",
+      "9:30 AM - 6:30 PM",
     gender:
       "Any",
     ageLimit:
       "18+",
     companyName:
-      "ubity",
+      "KNS metro properties",
     companyLogo:
-      ubity,
+      kns_metro_properites_image,
     industryType:
-      "Education",
+      "Real Estate",
     directApply:
-      "No",
+      "Yes",
     hrPhoneNo:
-      "9513186030",
+      "7406935096",
   },
   {
-    id: 3,
+    id: 6,
     jobTitle: "Real Estate Sales Executive",
     employmentType: "Full-Time",
     workMode: "On-site",
@@ -161,7 +316,7 @@ const jobs = [
       "1234567891",
   },
   {
-    id: 4,
+    id: 7,
     jobTitle: "Real Estate Sales Manager",
     employmentType: "Full-Time",
     workMode: "On-site",
@@ -213,7 +368,7 @@ const jobs = [
       "1234567891",
   },
   {
-    id: 5,
+    id: 8,
     jobTitle: "Pre Sales Executive",
     employmentType: "Full-Time",
     workMode: "On-site",

@@ -184,25 +184,27 @@ export default function JobCard({
             {/* JOB TITLE */}
 
             <h2
-              className={`
-                font-bold
-                text-slate-800
-                mt-1
-                leading-tight
-                line-clamp-2
-                break-words
+  className={`
+    font-bold
+    text-slate-800
+    mt-1
+    leading-tight
+    line-clamp-2
+    break-words
 
-                ${
-                  job.jobTitle.length > 29
-                    ? "text-[12px]"
-                    : "text-sm"
-                }
-              `}
-            >
+    ${
+      job.jobTitle.length > 30
+        ? "text-[10px]"
+        : job.jobTitle.length > 29
+        ? "text-[12px]"
+        : "text-sm"
+    }
+  `}
+>
 
-              {job.jobTitle}
+  {job.jobTitle}
 
-            </h2>
+</h2>
 
             {/* SALARY */}
 
