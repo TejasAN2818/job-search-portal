@@ -105,7 +105,7 @@ const jobs = [
     industryType:
       "Real Estate",
     directApply:
-      "No",
+      "Yes",
     hrPhoneNo:
       "7406935096",
   },
@@ -155,7 +155,7 @@ const jobs = [
     industryType:
       "Real Estate",
     directApply:
-      "No",
+      "Yes",
     hrPhoneNo:
       "7406935096",
   },
@@ -259,7 +259,7 @@ const jobs = [
     industryType:
       "Real Estate",
     directApply:
-      "No",
+      "Yes",
     hrPhoneNo:
       "7406935096",
   },
