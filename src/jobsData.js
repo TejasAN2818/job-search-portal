@@ -5,9 +5,63 @@ import kns_metro_properites_image from "./assets/images/kns_metro_properites_ima
 
 
 const jobs = [
+   {
+    id: 1,
+    jobTitle: "Pre Sales Executive",
+    employmentType: "Full-Time",
+    workMode: "On-site",
+    numberOfOpenings: 10,
+    salary: "₹16,000 - ₹20,000",
+    incentives: "Yes",
+    incentiveDetails: "Performance Bonus",
+    experience: "0 - 1 Years",
+    educationQualification: "10th / PUC / Any Degree",
+    requiredSkills: [
+      "Communication",
+      "Sales",
+      "Lead Handling"
+    ],
+    languagesRequired: [
+      "Kannada",
+      "English"
+    ],
+    location: "Dommasandra, Sarjapur",
+    googleMapLink:
+      "https://maps.app.goo.gl/ZFruUtMCEQRfmK497",
+    shortDescription:
+      "Pre sales executive role for handling customer leads.",
+    fullJobDescription:
+      "Handle inbound leads, explain project details, schedule site visits and coordinate with sales team.",
+    requirements: [
+      "Good communication skills",
+      "Basic computer knowledge"
+    ],
+    benefits: [
+      "Incentives",
+      "Growth Opportunities"
+    ],
+    workingDays:
+      "6 days",
+    officeTiming:
+      "10:00 AM - 6:30 PM",
+    gender:
+      "Female only",
+    ageLimit:
+      "18+",
+    companyName:
+      "South India Properites",
+    companyLogo:
+      company1,
+    industryType:
+      "Real Estate",
+    directApply:
+      "No",
+    hrPhoneNo:
+      "1234567891",
+  },
 
   {
-    id: 1,
+    id: 2,
     jobTitle: "Bussiness Development Associate (Ubity)",
     employmentType: "Part-Time",
     workMode: "Work from Home",
@@ -60,7 +114,7 @@ const jobs = [
 
  
   {
-    id: 2,
+    id: 3,
     jobTitle: "Business development executive (KNS)",
     employmentType: "Full-Time",
     workMode: "Office",
@@ -110,7 +164,7 @@ const jobs = [
       "7406935096",
   },
   {
-    id: 3,
+    id: 4,
     jobTitle: "Business development Team Leader (KNS)",
     employmentType: "Full-Time",
     workMode: "Office",
@@ -160,7 +214,7 @@ const jobs = [
       "7406935096",
   },
    {
-    id: 4,
+    id: 5,
     jobTitle: "Business development associate",
     employmentType: "Full-Time",
     workMode: "Field sales and service",
@@ -214,7 +268,7 @@ const jobs = [
   },
   
   {
-    id: 5,
+    id: 6,
     jobTitle: "Business development Manager (KNS)",
     employmentType: "Full-Time",
     workMode: "Office",
@@ -264,7 +318,7 @@ const jobs = [
       "7406935096",
   },
   {
-    id: 6,
+    id: 7,
     jobTitle: "Real Estate Sales Executive",
     employmentType: "Full-Time",
     workMode: "On-site",
@@ -316,7 +370,7 @@ const jobs = [
       "1234567891",
   },
   {
-    id: 7,
+    id: 8,
     jobTitle: "Real Estate Sales Manager",
     employmentType: "Full-Time",
     workMode: "On-site",
@@ -358,60 +412,6 @@ const jobs = [
       "18+",
     companyName:
       "South india Properties",
-    companyLogo:
-      company1,
-    industryType:
-      "Real Estate",
-    directApply:
-      "No",
-    hrPhoneNo:
-      "1234567891",
-  },
-  {
-    id: 8,
-    jobTitle: "Pre Sales Executive",
-    employmentType: "Full-Time",
-    workMode: "On-site",
-    numberOfOpenings: 10,
-    salary: "₹16,000 - ₹20,000",
-    incentives: "Yes",
-    incentiveDetails: "Performance Bonus",
-    experience: "0 - 1 Years",
-    educationQualification: "10th / PUC / Any Degree",
-    requiredSkills: [
-      "Communication",
-      "Sales",
-      "Lead Handling"
-    ],
-    languagesRequired: [
-      "Kannada",
-      "English"
-    ],
-    location: "Dommasandra, Sarjapur",
-    googleMapLink:
-      "https://maps.app.goo.gl/ZFruUtMCEQRfmK497",
-    shortDescription:
-      "Pre sales executive role for handling customer leads.",
-    fullJobDescription:
-      "Handle inbound leads, explain project details, schedule site visits and coordinate with sales team.",
-    requirements: [
-      "Good communication skills",
-      "Basic computer knowledge"
-    ],
-    benefits: [
-      "Incentives",
-      "Growth Opportunities"
-    ],
-    workingDays:
-      "6 days",
-    officeTiming:
-      "10:00 AM - 6:30 PM",
-    gender:
-      "Female only",
-    ageLimit:
-      "18+",
-    companyName:
-      "South India Properites",
     companyLogo:
       company1,
     industryType:
