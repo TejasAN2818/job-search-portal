@@ -1,15 +1,20 @@
-import {
-  useState,
-  useEffect
-} from "react";
-
+import { useState, useEffect } from "react";
 import { Analytics } from "@vercel/analytics/react";
+import { Menu } from "lucide-react";
+
 
 import jobs from "./jobsData";
-
 import JobCard from "./components/JobCard";
-
 import JobDetailsModal from "./components/JobDetailsModal";
+import PostJobForm from "./components/PostJobForm";
+import Header from "./main_components/Header";
+import Sidebar from "./main_components/Sidebar";
+import JobSearchForm from "./main_components/JobSearchForm";
+import CategoryBar from "./main_components/CategoryBar";
+import JobList from "./main_components/JobList";
+import {
+  saveUserData
+} from "./GoogleSheet/UserSheet";
 
 export default function App() {
 
@@ -32,14 +37,28 @@ export default function App() {
         };
     });
 
-  const [showJobs, setShowJobs] =
-    useState(false);
+  const [showJobs, setShowJobs] = useState(false);
+  const [selectedJob, setSelectedJob] = useState(null);
+  const [showMenu, setShowMenu] = useState(false);
+  const [selectedCategory, setSelectedCategory] = useState("All Jobs");
+  const [showJobCategories, setShowJobCategories] = useState(false);
+  const [showProfile, setShowProfile] = useState(false);
+  const [showAbout, setShowAbout] = useState(false);
+  const [showPostJob, setShowPostJob] = useState(false);
 
-  const [selectedJob, setSelectedJob] =
-    useState(null);
 
-  const GOOGLE_SCRIPT_URL =
-    "https://script.google.com/macros/s/AKfycbz18DX-0EEynCQOi0DyG0fqFCBkgGlY5Dl7yd7yEuI5EeEXSHUmrKbuPNhP9ZI0i6Q/exec";
+
+  const categories = [
+    "All Jobs",
+    ...Array.from(
+      new Set(
+        jobs
+          .map((job) => job.category)
+          .filter(Boolean)
+      )
+    )
+  ];
+
 
   // HANDLE INPUT CHANGES
 
@@ -60,34 +79,8 @@ export default function App() {
 
   }, [formData]);
 
-  // SAVE TO GOOGLE SHEET
 
-  const saveToGoogleSheet = async (
-    jobTitle = ""
-  ) => {
-
-    try {
-
-      fetch(GOOGLE_SCRIPT_URL, {
-        method: "POST",
-        mode: "no-cors",
-        headers: {
-          "Content-Type":
-            "application/json"
-        },
-        body: JSON.stringify({
-          ...formData,
-          appliedJob: jobTitle,
-          createdAt:
-            new Date().toLocaleString()
-        })
-      });
-
-    } catch (error) {
-
-      console.log(error);
-    }
-  };
+  
 
   // FORM SUBMIT
 
@@ -95,9 +88,10 @@ export default function App() {
 
     e.preventDefault();
 
-    saveToGoogleSheet(
-      "FORM_ENTRY"
-    );
+   saveUserData(
+  formData,
+  "FORM_ENTRY"
+);
 
     setShowJobs(true);
   };
@@ -108,7 +102,10 @@ export default function App() {
     jobTitle
   ) => {
 
-    saveToGoogleSheet(jobTitle);
+    saveUserData(
+  formData,
+  jobTitle
+);
 
   };
 
@@ -116,266 +113,83 @@ export default function App() {
 
     <div className="min-h-screen bg-yellow-50">
 
-     {/* HEADER */}
+      {/* HEADER */}
 
-<header
-  className="
-    fixed
-    top-0
-    left-0
-    w-full
-    z-50
-    bg-yellow-400
-    shadow-md
-    px-4
-    py-2
-  "
->
+      <Header
+        setShowMenu={setShowMenu}
+        setShowPostJob={setShowPostJob}
+        setShowJobs={setShowJobs}
+      />
 
-  <div className="flex items-center justify-between">
+      {/* OVERLAY */}
 
-    {/* LEFT */}
+      <div
+        onClick={() => setShowMenu(false)}
+        className={`fixed inset-0 bg-black/50 z-40 transition-opacity duration-300 
+          ${showMenu
+            ? "opacity-100 visible"
+            : "opacity-0 invisible"
+          }`}
+      />
 
-    <div>
+      {/* SIDE BARS */}
+      <Sidebar
+        showMenu={showMenu}
+        setShowMenu={setShowMenu}
+        showJobCategories={showJobCategories}
+        setShowJobCategories={setShowJobCategories}
+        categories={categories}
+        setSelectedCategory={setSelectedCategory}
+        setShowJobs={setShowJobs}
+        showProfile={showProfile}
+        setShowProfile={setShowProfile}
+        formData={formData}
+        showAbout={showAbout}
+        setShowAbout={setShowAbout}
+      />
 
-      <h1
-        className="
-          text-xl
-          sm:text-3xl
-          font-extrabold
-          text-gray-900
-          leading-tight
-        "
-      >
 
-        Work Station
-
-      </h1>
-
-      <p
-        className="
-          text-yellow-900
-          text-[10px]
-          sm:text-xs
-        "
-      >
-
-        Find Your Dream Job
-
-      </p>
-
-    </div>
-
-    {/* RIGHT BUTTON */}
-
-   <button
-  className="
-    bg-black
-    text-white
-    px-3
-    py-1.5
-    rounded-xl
-    text-[11px]
-    sm:text-xs
-    font-semibold
-    shadow-sm
-    active:scale-95
-    transition-all
-    flex
-    items-center
-    gap-1.5
-  "
->
-
-  Post Jobs
-
-  <span
-    className="
-      bg-yellow-400
-      text-black
-      px-1.5
-      py-[2px]
-      rounded-md
-      text-[8px]
-      font-bold
-      leading-none
-    "
-  >
-
-    FREE
-
-  </span>
-
-</button>
-
-  </div>
-
-</header>
 
       {/* MAIN */}
-
-
-
-   
       <div className="pt-[62px] p-3 sm:p-5">
 
-        {!showJobs ? (
+        {showPostJob ? (
 
-          <form
-            onSubmit={handleSubmit}
-            className="max-w-md mx-auto bg-white border border-yellow-300 rounded-3xl shadow-xl p-5 flex flex-col gap-4"
-          >
+          <PostJobForm
+            setShowPostJob={
+              setShowPostJob
+            }
+          />
 
-            <h2 className="text-xl font-bold text-center text-gray-800 mb-2">
+        ) : !showJobs ? (
 
-              Job Search Form
-
-            </h2>
-
-            <input
-              type="text"
-              name="name"
-              placeholder="Enter Your Name"
-              value={formData.name}
-              onChange={handleChange}
-              required
-              className="border border-yellow-300 focus:border-yellow-500 rounded-xl p-3 outline-none text-sm"
-            />
-
-            <input
-              type="tel"
-              name="phone_No"
-              placeholder="Enter Phone Number"
-              value={formData.phone_No}
-              onChange={handleChange}
-              required
-              className="border border-yellow-300 focus:border-yellow-500 rounded-xl p-3 outline-none text-sm"
-            />
-
-            <input
-              type="text"
-              name="designation"
-              placeholder="Job Role / Designation"
-              value={formData.designation}
-              onChange={handleChange}
-              className="border border-yellow-300 focus:border-yellow-500 rounded-xl p-3 outline-none text-sm"
-            />
-
-            <input
-              type="text"
-              name="location"
-              placeholder="Preferred Location"
-              value={formData.location}
-              onChange={handleChange}
-              className="border border-yellow-300 focus:border-yellow-500 rounded-xl p-3 outline-none text-sm"
-            />
-
-            <select
-              name="gender"
-              value={formData.gender}
-              onChange={handleChange}
-              className="border border-yellow-300 focus:border-yellow-500 rounded-xl p-3 outline-none text-sm bg-white"
-            >
-
-              <option value="">
-                Select Gender
-              </option>
-
-              <option>
-                Male
-              </option>
-
-              <option>
-                Female
-              </option>
-
-              <option>
-                Other
-              </option>
-
-            </select>
-
-            <button
-              type="submit"
-              className="bg-yellow-400 hover:bg-yellow-500 active:scale-[0.98] transition-all text-black font-bold py-3 rounded-xl shadow-md"
-            >
-
-              Submit
-
-            </button>
-
-          </form>
+          //job search form
+          <JobSearchForm
+            formData={formData}
+            handleChange={handleChange}
+            handleSubmit={handleSubmit}
+          />
 
         ) : (
 
           <>
 
-            {/* TOP BAR */}
+            {/* catagory BAR */}
 
-     
-            <div
-  className="
-    fixed
-    top-[51px]
-    left-0
-    w-full
-    z-40
-    bg-yellow-50
-    px-3
-    py-2
-    flex
-    items-center
-    justify-between
-    border-b
-    border-yellow-100
-  "
->
-
-
-              <h2 className="text-lg sm:text-2xl font-bold text-gray-800">
-
-                Available Jobs
-
-              </h2>
-
-              <button
-                onClick={() =>
-                  setShowJobs(false)
-                }
-               className="
-  bg-gray-200
-  text-gray-700
-  px-4
-  py-1.5
-  rounded-xl
-  text-sm
-  hover:bg-gray-300
-  transition-all
-"
-              >
-
-                Back
-
-              </button>
-
-            </div>
+            <CategoryBar
+              categories={categories}
+              selectedCategory={selectedCategory}
+              setSelectedCategory={setSelectedCategory}
+            />
 
             {/* JOB GRID */}
 
-            <div className="flex flex-col gap-4 pt-[55px]">
-
-              {jobs.map((job) => (
-
-                <JobCard
-                  key={job.id}
-                  job={job}
-                  handleApply={handleApply}
-                  setSelectedJob={setSelectedJob}
-                />
-
-              ))}
-
-            </div>
+            <JobList
+              jobs={jobs}
+              selectedCategory={selectedCategory}
+              handleApply={handleApply}
+              setSelectedJob={setSelectedJob}
+            />
 
           </>
 
@@ -391,10 +205,10 @@ export default function App() {
 
       </div>
 
-       <Analytics />
+      <Analytics />
 
     </div>
 
-    
+
   );
 }

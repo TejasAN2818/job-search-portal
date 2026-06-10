@@ -5,8 +5,64 @@ import kns_metro_properites_image from "./assets/images/kns_metro_properites_ima
 
 
 const jobs = [
-   {
+  {
     id: 1,
+     category: "Finance",
+    jobTitle: "Business development associate (Hosa Road)",
+    employmentType: "Full-Time",
+    workMode: "Field sales and service",
+    numberOfOpenings: 50,
+    salary: "₹20,000 - ₹25,000",
+    incentives: "upto 25000",
+    incentiveDetails: "Explain in interview time",
+    experience: "0 - 1 Years",
+    educationQualification: "12th above or ITI  or deploma",
+    requiredSkills: [
+      "Communication",
+      "Sales",
+      "Filed sales and service"
+    ],
+    languagesRequired: [
+      "Kannada",
+      "+ any other"
+    ],
+    location: "Hosa Road, Kudlu Gate",
+    googleMapLink:
+      "https://maps.app.goo.gl/7orCby8xgNV3AakF7",
+    shortDescription:
+      "N A",
+    fullJobDescription:
+      "N A",
+    requirements: [
+      "Bike",
+        "Smart phone"
+    ],
+    benefits: [
+      "Incentives",
+      "Growth Opportunities"
+    ],
+    workingDays:
+      "Monday - Saturday ( 6 days )",
+    officeTiming:
+      "9 AM - 6 PM",
+    gender:
+      "Any",
+    ageLimit:
+      "18+",
+    companyName:
+      "Phonepe",
+    companyLogo:
+      phonepe,
+    industryType:
+      "sales",
+    directApply:
+      "No",
+    hrPhoneNo:
+      "897 1122 063",
+  },
+   {
+    id: 2,
+    category: "Telecalling",
     jobTitle: "Pre Sales Executive",
     employmentType: "Full-Time",
     workMode: "On-site",
@@ -61,7 +117,8 @@ const jobs = [
   },
 
   {
-    id: 2,
+    id: 3,
+     category: "Real Estate c",
     jobTitle: "Bussiness Development Associate (Ubity)",
     employmentType: "Part-Time",
     workMode: "Work from Home",
@@ -114,7 +171,8 @@ const jobs = [
 
  
   {
-    id: 3,
+    id: 4,
+     category: "Real Estate d",
     jobTitle: "Business development executive (KNS)",
     employmentType: "Full-Time",
     workMode: "Office",
@@ -164,7 +222,8 @@ const jobs = [
       "7406935096",
   },
   {
-    id: 4,
+    id: 5,
+     category: "Real Estate g",
     jobTitle: "Business development Team Leader (KNS)",
     employmentType: "Full-Time",
     workMode: "Office",
@@ -214,7 +273,8 @@ const jobs = [
       "7406935096",
   },
    {
-    id: 5,
+    id: 6,
+     category: "Real Estate h",
     jobTitle: "Business development associate",
     employmentType: "Full-Time",
     workMode: "Field sales and service",
@@ -268,7 +328,8 @@ const jobs = [
   },
   
   {
-    id: 6,
+    id: 7,
+     category: "Real Estate",
     jobTitle: "Business development Manager (KNS)",
     employmentType: "Full-Time",
     workMode: "Office",
@@ -318,7 +379,8 @@ const jobs = [
       "7406935096",
   },
   {
-    id: 7,
+    id: 8,
+     category: "Real Estate",
     jobTitle: "Real Estate Sales Executive",
     employmentType: "Full-Time",
     workMode: "On-site",
@@ -370,7 +432,8 @@ const jobs = [
       "1234567891",
   },
   {
-    id: 8,
+    id: 9,
+     category: "Real Estate",
     jobTitle: "Real Estate Sales Manager",
     employmentType: "Full-Time",
     workMode: "On-site",
