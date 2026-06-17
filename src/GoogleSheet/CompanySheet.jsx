@@ -1,58 +1,50 @@
 const COMPANY_SHEET_URL =
-  "https://script.google.com/macros/s/AKfycbxdKw3Bxn3x2ZJhyVGoVbBgyvKgfBgKsI5XEqg4DN14HxSYheleOeUnMqnJlPF7mCPs/exec";
+  "https://script.google.com/macros/s/AKfycbx35qs1tTSjJ4C2cQtmuZC2EQOabanowcySmPB7UlbvwV1MLEHlymp6ngKXHGHEf2VT9w/exec";
 
 export const saveCompanyJob = async (
   jobData
 ) => {
 
-  try {
+  await fetch(
+    COMPANY_SHEET_URL,
+    {
+      method: "POST",
+      mode: "no-cors",
+      headers: {
+        "Content-Type":
+          "application/json"
+      },
+      body: JSON.stringify({
 
-    await fetch(
-      COMPANY_SHEET_URL,
-      {
-        method: "POST",
-        mode: "no-cors",
-        headers: {
-          "Content-Type":
-            "application/json"
-        },
-        body: JSON.stringify({
+        companyName:
+          jobData.companyName,
 
-          companyName:
-            jobData.companyName,
+        jobTitle:
+          jobData.jobTitle,
 
-          jobTitle:
-            jobData.jobTitle,
+        vacancies:
+          jobData.vacancies,
 
-          vacancies:
-            jobData.vacancies,
+        salary:
+          jobData.salary,
 
-          salary:
-            jobData.salary,
+        location:
+          jobData.location,
 
-          location:
-            jobData.location,
+        hrName:
+          jobData.hrName,
 
-          hrName:
-            jobData.hrName,
+        contactNo:
+          jobData.contactNo,
 
-          contactNo:
-            jobData.contactNo,
+        type:
+          "JOB_POST",
 
-          type:
-            "JOB_POST",
+        createdAt:
+          new Date().toLocaleString()
 
-          createdAt:
-            new Date().toLocaleString()
-
-        })
-      }
-    );
-
-  } catch (error) {
-
-    console.log(error);
-
-  }
+      })
+    }
+  );
 
 };

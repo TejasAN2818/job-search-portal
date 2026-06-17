@@ -7,8 +7,9 @@ import kns_metro_properites_image from "./assets/images/kns_metro_properites_ima
 const jobs = [
   {
     id: 1,
-     category: "Finance",
-    jobTitle: "Business development associate (Hosa Road)",
+    views: 15,
+    category: "Finance",
+    jobTitle: "Business development associate",
     employmentType: "Full-Time",
     workMode: "Field sales and service",
     numberOfOpenings: 50,
@@ -35,7 +36,7 @@ const jobs = [
       "N A",
     requirements: [
       "Bike",
-        "Smart phone"
+      "Smart phone"
     ],
     benefits: [
       "Incentives",
@@ -50,7 +51,7 @@ const jobs = [
     ageLimit:
       "18+",
     companyName:
-      "Phonepe",
+      "Phonepe (Hosa Road)",
     companyLogo:
       phonepe,
     industryType:
@@ -59,9 +60,11 @@ const jobs = [
       "No",
     hrPhoneNo:
       "897 1122 063",
+    sheetUrl: "https://script.google.com/macros/s/AKfycbxD8RXklbXDyTKARM-yi0PNXSmoZqQdiD1DGGJWANTs-0xNyrDagi-X2BvU6_9WSLFr/exec",
   },
-   {
+  {
     id: 2,
+      views: 16,
     category: "Telecalling",
     jobTitle: "Pre Sales Executive",
     employmentType: "Full-Time",
@@ -105,7 +108,7 @@ const jobs = [
     ageLimit:
       "18+",
     companyName:
-      "South India Properites",
+      "South india Properties",
     companyLogo:
       company1,
     industryType:
@@ -114,12 +117,14 @@ const jobs = [
       "No",
     hrPhoneNo:
       "1234567891",
+    sheetUrl: "https://script.google.com/macros/s/AKfycbwqn3ewY0MijdNTdzMhgrymjYsOkOq44KsIqgzO8ew7qU7Bdq4iM0tPjxwtk7X8pKYhLA/exec",
   },
 
   {
     id: 3,
-     category: "Real Estate c",
-    jobTitle: "Bussiness Development Associate (Ubity)",
+      views: 13,
+    category: "Educational",
+    jobTitle: "Bussiness Development Associate",
     employmentType: "Part-Time",
     workMode: "Work from Home",
     numberOfOpenings: 100,
@@ -167,13 +172,15 @@ const jobs = [
       "No",
     hrPhoneNo:
       "9513186030",
+    sheetUrl: "https://script.google.com/macros/s/AKfycbzvISrxukbFVlnpl8ygy-qlt08Wrsf41ITUTlLxZi1EogPpzAFutdX3HWwP926wZuT_/exec",
   },
 
- 
+
   {
     id: 4,
-     category: "Real Estate d",
-    jobTitle: "Business development executive (KNS)",
+      views: 12,
+    category: "Real Estate",
+    jobTitle: "Business development executive",
     employmentType: "Full-Time",
     workMode: "Office",
     numberOfOpenings: 150,
@@ -217,14 +224,16 @@ const jobs = [
     industryType:
       "Real Estate",
     directApply:
-      "Yes",
+      "No",
     hrPhoneNo:
       "7406935096",
+    sheetUrl: "https://script.google.com/macros/s/AKfycbzBM1RBSh1Mg73KdE8xNGq6ZlQX9-XSDdIGR-1caVgrKu3aPaHAYtdvyqvg25eO_9nYxw/exec",
   },
   {
     id: 5,
-     category: "Real Estate g",
-    jobTitle: "Business development Team Leader (KNS)",
+      views: 12,
+    category: "Real Estate",
+    jobTitle: "Business development Team Leader",
     employmentType: "Full-Time",
     workMode: "Office",
     numberOfOpenings: 40,
@@ -268,13 +277,15 @@ const jobs = [
     industryType:
       "Real Estate",
     directApply:
-      "Yes",
+      "No",
     hrPhoneNo:
       "7406935096",
+    sheetUrl: "https://script.google.com/macros/s/AKfycbzBM1RBSh1Mg73KdE8xNGq6ZlQX9-XSDdIGR-1caVgrKu3aPaHAYtdvyqvg25eO_9nYxw/exec",
   },
-   {
+  {
     id: 6,
-     category: "Real Estate h",
+      views: 10,
+    category: "Finance",
     jobTitle: "Business development associate",
     employmentType: "Full-Time",
     workMode: "Field sales and service",
@@ -316,7 +327,7 @@ const jobs = [
     ageLimit:
       "18+",
     companyName:
-      "Phonepe",
+      "Phonepe (whitefield",
     companyLogo:
       phonepe,
     industryType:
@@ -325,12 +336,14 @@ const jobs = [
       "No",
     hrPhoneNo:
       "984 5390 121",
+    sheetUrl: "https://script.google.com/macros/s/AKfycbwSDIWc0074FPFhU14J39CUU79Q8hKnPdmWatSQKMJAF0jEglxFXjOg2JJhcZT3Z1ppyg/exec",
   },
-  
+
   {
     id: 7,
-     category: "Real Estate",
-    jobTitle: "Business development Manager (KNS)",
+      views: 9,
+    category: "Real Estate",
+    jobTitle: "Business development Manager",
     employmentType: "Full-Time",
     workMode: "Office",
     numberOfOpenings: 40,
@@ -374,13 +387,15 @@ const jobs = [
     industryType:
       "Real Estate",
     directApply:
-      "Yes",
+      "No",
     hrPhoneNo:
       "7406935096",
+    sheetUrl: "https://script.google.com/macros/s/AKfycbzBM1RBSh1Mg73KdE8xNGq6ZlQX9-XSDdIGR-1caVgrKu3aPaHAYtdvyqvg25eO_9nYxw/exec",
   },
   {
     id: 8,
-     category: "Real Estate",
+      views: 8,
+    category: "Real Estate",
     jobTitle: "Real Estate Sales Executive",
     employmentType: "Full-Time",
     workMode: "On-site",
@@ -430,10 +445,12 @@ const jobs = [
       "No",
     hrPhoneNo:
       "1234567891",
+    sheetUrl: "https://script.google.com/macros/s/AKfycbwqn3ewY0MijdNTdzMhgrymjYsOkOq44KsIqgzO8ew7qU7Bdq4iM0tPjxwtk7X8pKYhLA/exec",
   },
   {
     id: 9,
-     category: "Real Estate",
+      views: 7,
+    category: "Real Estate",
     jobTitle: "Real Estate Sales Manager",
     employmentType: "Full-Time",
     workMode: "On-site",
@@ -483,8 +500,9 @@ const jobs = [
       "No",
     hrPhoneNo:
       "1234567891",
+    sheetUrl: "https://script.google.com/macros/s/AKfycbwqn3ewY0MijdNTdzMhgrymjYsOkOq44KsIqgzO8ew7qU7Bdq4iM0tPjxwtk7X8pKYhLA/exec",
   }
-  
+
 
 ];
 

@@ -31,7 +31,7 @@ export default function JobCard({
   const popup = popupMessage && (
 
     <div
-        className="
+      className="
   fixed
   top-4
   left-1/2
@@ -184,7 +184,7 @@ export default function JobCard({
             {/* JOB TITLE */}
 
             <h2
-  className={`
+              className={`
     font-bold
     text-slate-800
     mt-1
@@ -192,19 +192,18 @@ export default function JobCard({
     line-clamp-2
     break-words
 
-    ${
-      job.jobTitle.length > 30
-        ? "text-[10px]"
-        : job.jobTitle.length > 29
-        ? "text-[12px]"
-        : "text-sm"
-    }
+    ${job.jobTitle.length > 30
+                  ? "text-[10px]"
+                  : job.jobTitle.length > 29
+                    ? "text-[12px]"
+                    : "text-sm"
+                }
   `}
->
+            >
 
-  {job.jobTitle}
+              {job.jobTitle}
 
-</h2>
+            </h2>
 
             {/* SALARY */}
 
@@ -358,9 +357,8 @@ export default function JobCard({
 
                   setTimeout(() => {
 
-                    handleApply(
-                      job.jobTitle
-                    );
+
+                    handleApply(job);
 
                     setIsApplied(true);
 
@@ -395,10 +393,9 @@ export default function JobCard({
                 transition-all
                 duration-300
 
-                ${
-                  isLoading
-                    ? "bg-gray-500 text-white"
-                    : showHR || isApplied
+                ${isLoading
+                  ? "bg-gray-500 text-white"
+                  : showHR || isApplied
                     ? "bg-blue-500 text-white"
                     : "bg-green-500 text-white"
                 }

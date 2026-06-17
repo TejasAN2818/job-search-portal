@@ -16,6 +16,12 @@ import {
   saveUserData
 } from "./GoogleSheet/UserSheet";
 
+import {
+  saveApplicationData
+} from "./GoogleSheet/client_google_Sheet/SaveApplicationData";
+
+import Footer from "./main_components/Footer";
+
 export default function App() {
 
   const [formData, setFormData] =
@@ -41,9 +47,9 @@ export default function App() {
   const [selectedJob, setSelectedJob] = useState(null);
   const [showMenu, setShowMenu] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState("All Jobs");
-  const [showJobCategories, setShowJobCategories] = useState(false);
-  const [showProfile, setShowProfile] = useState(false);
-  const [showAbout, setShowAbout] = useState(false);
+
+  const [activeSidebarSection, setActiveSidebarSection] = useState("");
+
   const [showPostJob, setShowPostJob] = useState(false);
 
 
@@ -80,7 +86,7 @@ export default function App() {
   }, [formData]);
 
 
-  
+
 
   // FORM SUBMIT
 
@@ -88,38 +94,50 @@ export default function App() {
 
     e.preventDefault();
 
-   saveUserData(
-  formData,
-  "FORM_ENTRY"
-);
-
+    // Show jobs immediately
     setShowJobs(true);
+
+    // Save in background
+    saveUserData(formData)
+      .catch((error) => {
+
+        console.log(
+          "Google Sheet Error:",
+          error
+        );
+
+      });
+
   };
 
   // APPLY JOB
 
+
   const handleApply = (
-    jobTitle
+    job
   ) => {
 
-    saveUserData(
-  formData,
-  jobTitle
-);
+    saveApplicationData(
+      formData,
+      job
+    );
 
   };
 
   return (
 
-    <div className="min-h-screen bg-yellow-50">
+   // <div className="min-h-screen bg-yellow-50">
+    <div className="min-h-screen bg-yellow-50 flex flex-col">
 
       {/* HEADER */}
 
+     
       <Header
-        setShowMenu={setShowMenu}
-        setShowPostJob={setShowPostJob}
-        setShowJobs={setShowJobs}
-      />
+  setShowMenu={setShowMenu}
+  setShowPostJob={setShowPostJob}
+  setShowJobs={setShowJobs}
+  showJobs={showJobs}
+/>
 
       {/* OVERLAY */}
 
@@ -136,22 +154,29 @@ export default function App() {
       <Sidebar
         showMenu={showMenu}
         setShowMenu={setShowMenu}
-        showJobCategories={showJobCategories}
-        setShowJobCategories={setShowJobCategories}
+
+
         categories={categories}
         setSelectedCategory={setSelectedCategory}
         setShowJobs={setShowJobs}
-        showProfile={showProfile}
-        setShowProfile={setShowProfile}
+
         formData={formData}
-        showAbout={showAbout}
-        setShowAbout={setShowAbout}
+
+
+
+
+
+
+
+        activeSidebarSection={activeSidebarSection}
+        setActiveSidebarSection={setActiveSidebarSection}
       />
 
 
 
       {/* MAIN */}
-      <div className="pt-[62px] p-3 sm:p-5">
+      {/* <div className="pt-[62px] p-3 sm:p-5"> */}
+      <div className="pt-[62px] p-3 sm:p-5 flex-1">
 
         {showPostJob ? (
 
@@ -203,7 +228,13 @@ export default function App() {
           handleApply={handleApply}
         />
 
+ 
+
       </div>
+            {showJobs && (
+  <Footer />
+)}
+      
 
       <Analytics />
 

@@ -1,35 +1,49 @@
 const USER_SHEET_URL =
-  "https://script.google.com/macros/s/AKfycbz18DX-0EEynCQOi0DyG0fqFCBkgGlY5Dl7yd7yEuI5EeEXSHUmrKbuPNhP9ZI0i6Q/exec";
+"https://script.google.com/macros/s/AKfycbwZZOugSG-0evLcAUCl6RZvHdUiKUPXH3rHCiBSLhDMtetToMuAJoDKwnybr5W-6g_z1Q/exec";
 
 export const saveUserData = async (
-  formData,
-  jobTitle = ""
+  formData
 ) => {
 
-  try {
+  console.log({
+  name: formData.name,
+  phone_No: formData.phone_No,
+  designation: formData.designation,
+  location: formData.location,
+  gender: formData.gender
+});
 
-    await fetch(
-      USER_SHEET_URL,
-      {
-        method: "POST",
-        mode: "no-cors",
-        headers: {
-          "Content-Type":
-            "application/json"
-        },
-        body: JSON.stringify({
-          ...formData,
-          appliedJob: jobTitle,
-          createdAt:
-            new Date().toLocaleString()
-        })
-      }
-    );
+  await fetch(
+    USER_SHEET_URL,
+    {
+      method: "POST",
+      mode: "no-cors",
+      headers: {
+        "Content-Type":
+          "application/json"
+      },
+      body: JSON.stringify({
 
-  } catch (error) {
+        name:
+          formData.name,
 
-    console.log(error);
+        phone_No:
+          formData.phone_No,
 
-  }
+        designation:
+          formData.designation,
+
+        location:
+          formData.location,
+
+        gender:
+          formData.gender,
+
+        createdAt:
+          new Date().toLocaleString()
+
+      })
+    }
+  );
 
 };

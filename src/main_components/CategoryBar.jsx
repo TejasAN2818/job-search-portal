@@ -1,8 +1,34 @@
+import { useRef } from "react";
+
 export default function CategoryBar({
   categories,
   selectedCategory,
   setSelectedCategory
 }) {
+
+  const scrollRef = useRef(null);
+
+  const handleCategorySelect = (
+    category
+  ) => {
+
+    setSelectedCategory(
+      category
+    );
+
+    if (
+      category === "All Jobs" &&
+      scrollRef.current
+    ) {
+
+      scrollRef.current.scrollTo({
+        left: 0,
+        behavior: "smooth"
+      });
+
+    }
+
+  };
 
   return (
 
@@ -13,46 +39,107 @@ export default function CategoryBar({
         left-0
         w-full
         z-40
-        bg-yellow-50
-        px-3
+        bg-white/95
+        backdrop-blur-md
+        pt-3
+        px-2
         py-2
         border-b
-        border-yellow-100
-        overflow-x-auto
-        whitespace-nowrap
+        border-gray-200
+        shadow-sm
+        flex
+        items-center
+        gap-2
       "
     >
 
-      <div className="flex gap-2">
+      {/* ALL JOBS BUTTON */}
 
-        {categories.map((category) => (
+      <button
+        onClick={() =>
+          handleCategorySelect(
+            "All Jobs"
+          )
+        }
+        className={`
+          px-3
+          py-1.5
+          rounded-full
+          text-xs
+          font-medium
+          shrink-0
+          transition-all
+          duration-300
+          hover:scale-105
+          active:scale-95
+          ${
+            selectedCategory ===
+            "All Jobs"
+              ? "bg-black text-white shadow-md scale-105"
+              : "bg-gray-100 text-gray-700 hover:bg-gray-200"
+          }
+        `}
+      >
 
-          <button
-            key={category}
-            onClick={() =>
-              setSelectedCategory(category)
-            }
-            className={`
-              px-4
-              py-1.5
-              rounded-xl
-              text-sm
-              font-medium
-              transition-all
+        🔥 All Jobs
 
-              ${
-                selectedCategory === category
-                  ? "bg-black text-white"
-                  : "bg-gray-200 text-gray-700"
+      </button>
+
+      {/* SCROLLABLE CATEGORY PILLS */}
+
+      <div
+        ref={scrollRef}
+        className="
+          flex
+          gap-2
+          overflow-x-auto
+          whitespace-nowrap
+          flex-1
+          scrollbar-hide
+          scroll-smooth
+        "
+      >
+
+        {categories
+          .filter(
+            (category) =>
+              category !==
+              "All Jobs"
+          )
+          .map((category) => (
+
+            <button
+              key={category}
+              onClick={() =>
+                handleCategorySelect(
+                  category
+                )
               }
-            `}
-          >
+              className={`
+                px-3
+                py-1.5
+                rounded-full
+                text-xs
+                font-medium
+                shrink-0
+                transition-all
+                duration-300
+                hover:scale-105
+                active:scale-95
+                ${
+                  selectedCategory ===
+                  category
+                    ? "bg-black text-white shadow-md scale-105"
+                    : "bg-gray-100 text-gray-700 hover:bg-gray-200"
+                }
+              `}
+            >
 
-            {category}
+              {category}
 
-          </button>
+            </button>
 
-        ))}
+          ))}
 
       </div>
 

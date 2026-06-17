@@ -3,7 +3,8 @@ import { Menu } from "lucide-react";
 export default function Header({
   setShowMenu,
   setShowPostJob,
-  setShowJobs
+  setShowJobs,
+    showJobs
 }) {
 
   return (
@@ -14,22 +15,26 @@ export default function Header({
 
         {/* MENU BUTTON */}
 
-        <button
-          onClick={() =>
-            setShowMenu(true)
-          }
-          className="
-            bg-black
-            text-white
-            p-2
-            rounded-lg
-            shadow-md
-          "
-        >
+      {showJobs ? (
 
-          <Menu size={18} />
+  <button
+    onClick={() => setShowMenu(true)}
+    className="
+      bg-black
+      text-white
+      p-2
+      rounded-lg
+      shadow-md
+    "
+  >
+    <Menu size={18} />
+  </button>
 
-        </button>
+) : (
+
+  <div className="w-[36px]" />
+
+)}
 
         {/* APP NAME */}
 
