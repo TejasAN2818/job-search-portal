@@ -15,7 +15,7 @@ export default function Footer() {
 
       <div className="max-w-4xl mx-auto text-center">
 
-        <div className="text-[9px] leading-tight">
+        <div className="text-[10px] leading-tight">
 
           <p>
             -:👨‍💻 Developer Details:-
@@ -31,7 +31,7 @@ export default function Footer() {
 
         </div>
 
-        <p className="mt-1 text-[9px] text-gray-500">
+        <p className="mt-1 text-[10px] text-gray-500">
           Version 1.0 © 2026 Work Station. All Rights Reserved.
         </p>
 
