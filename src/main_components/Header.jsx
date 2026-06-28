@@ -9,7 +9,8 @@ export default function Header({
 
   return (
 
-    <header className="fixed top-0 left-0 w-full z-50 bg-yellow-400 shadow-md px-4 py-2">
+    //<header className="fixed top-0 left-0 w-full z-50 bg-yellow-400 shadow-md px-4 py-2">
+    <header className="fixed top-0 left-1/2 -translate-x-1/2 w-full max-w-[430px] z-50 bg-yellow-400 shadow-md px-4 py-2">
 
       <div className="flex items-center justify-between">
 

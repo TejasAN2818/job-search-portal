@@ -118,19 +118,22 @@ return (
 
   <form
     onSubmit={handleSubmit}
-    className="
-      max-w-md
-      mx-auto
-      bg-white
-      border
-      border-yellow-300
-      rounded-3xl
-      shadow-xl
-      p-5
-      flex
-      flex-col
-      gap-4
-    "
+   className="
+  w-full
+  max-w-[400px]
+  mx-auto
+  mt-6
+  bg-white
+  border
+  border-yellow-300
+  rounded-3xl
+  shadow-xl
+  p-5
+  pt-16
+  flex
+  flex-col
+  gap-4
+"
   >
 
     <h2

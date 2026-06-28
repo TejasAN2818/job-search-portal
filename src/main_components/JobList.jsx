@@ -1,10 +1,12 @@
+import { useEffect } from "react";
 import JobCard from "../components/JobCard";
 
 export default function JobList({
   jobs,
   selectedCategory,
   handleApply,
-  setSelectedJob
+  setSelectedJob,
+  setJobCount
 }) {
 
   const sortedJobs =
@@ -20,9 +22,14 @@ export default function JobList({
           (a.views || 0)
       );
 
+    useEffect(() => {
+  setJobCount(sortedJobs.length);
+}, [sortedJobs, setJobCount]);
+
   return (
 
-    <div className="flex flex-col gap-4 pt-[55px]">
+    // <div className="flex flex-col gap-4 pt-[55px]">
+    <div className="flex flex-col gap-4 pt-[55px] flex-1">
 
       {sortedJobs.map((job) => (
 

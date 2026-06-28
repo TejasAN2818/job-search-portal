@@ -75,26 +75,29 @@ export default function JobDetailsModal({
       {popup}
 
 
-      <div
-        className="
+     <div
+  className="
     fixed
-    inset-0
+    inset-y-0
+    left-1/2
+    -translate-x-1/2
+    w-full
+    max-w-[430px]
     bg-black/60
     z-50
     flex
     justify-center
     items-center
     p-2
-    sm:p-4
     overflow-y-auto
   "
-      >
+>
 
         <div
-          className="
+  className="
     bg-white
-    w-full
-    max-w-3xl
+    w-[95%]
+    max-w-[410px]
     rounded-3xl
     overflow-y-auto
     overflow-x-hidden
@@ -103,7 +106,7 @@ export default function JobDetailsModal({
     shadow-2xl
     my-auto
   "
-        >
+>
 
           {/* FIXED CLOSE BUTTON */}
 
@@ -111,19 +114,19 @@ export default function JobDetailsModal({
             onClick={() =>
               setSelectedJob(null)
             }
-            className="
-               fixed
-              top-10
-              right-4
-              bg-red-500
-              text-white
-              px-4
-              py-2
-              rounded-xl
-              text-sm
-              z-[99999]
-              shadow-xl
-            "
+           className="
+absolute
+top-4
+right-4
+bg-red-500
+text-white
+px-4
+py-2
+rounded-xl
+text-sm
+z-50
+shadow-xl
+"
           >
 
             Close

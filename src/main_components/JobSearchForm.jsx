@@ -7,9 +7,24 @@ export default function JobSearchForm({
   return (
 
     <form
-      onSubmit={handleSubmit}
-      className="max-w-md mx-auto bg-white border border-yellow-300 rounded-3xl shadow-xl p-5 flex flex-col gap-4"
-    >
+  onSubmit={handleSubmit}
+  className="
+    w-full
+    max-w-[400px]
+    mx-auto
+    bg-white
+    border
+    border-yellow-300
+    rounded-3xl
+    shadow-xl
+    p-5
+      pt-20
+      mt-3
+    flex
+    flex-col
+    gap-4
+  "
+>
 
       <h2 className="text-xl font-bold text-center text-gray-800 mb-2">
         Job Search Form

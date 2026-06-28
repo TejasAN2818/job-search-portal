@@ -43,6 +43,7 @@ export default function App() {
         };
     });
 
+  const [jobCount, setJobCount] = useState(0);
   const [showJobs, setShowJobs] = useState(false);
   const [selectedJob, setSelectedJob] = useState(null);
   const [showMenu, setShowMenu] = useState(false);
@@ -126,118 +127,154 @@ export default function App() {
 
   return (
 
-   // <div className="min-h-screen bg-yellow-50">
-    <div className="min-h-screen bg-yellow-50 flex flex-col">
 
-      {/* HEADER */}
+    <div className="min-h-screen bg-gray-200 flex justify-center">
 
-     
-      <Header
-  setShowMenu={setShowMenu}
-  setShowPostJob={setShowPostJob}
-  setShowJobs={setShowJobs}
-  showJobs={showJobs}
-/>
+      <div className="relative w-full max-w-[430px] h-screen bg-yellow-50 shadow-xl flex flex-col overflow-hidden">
 
-      {/* OVERLAY */}
+        {/* HEADER */}
 
-      <div
+
+        <Header
+          setShowMenu={setShowMenu}
+          setShowPostJob={setShowPostJob}
+          setShowJobs={setShowJobs}
+          showJobs={showJobs}
+        />
+
+        {/* OVERLAY */}
+
+        {/* <div
         onClick={() => setShowMenu(false)}
         className={`fixed inset-0 bg-black/50 z-40 transition-opacity duration-300 
           ${showMenu
             ? "opacity-100 visible"
             : "opacity-0 invisible"
           }`}
-      />
+      /> */}
 
-      {/* SIDE BARS */}
-      <Sidebar
-        showMenu={showMenu}
-        setShowMenu={setShowMenu}
-
-
-        categories={categories}
-        setSelectedCategory={setSelectedCategory}
-        setShowJobs={setShowJobs}
-
-        formData={formData}
-
-
-
-
-
-
-
-        activeSidebarSection={activeSidebarSection}
-        setActiveSidebarSection={setActiveSidebarSection}
-      />
-
-
-
-      {/* MAIN */}
-      {/* <div className="pt-[62px] p-3 sm:p-5"> */}
-      <div className="pt-[62px] p-3 sm:p-5 flex-1">
-
-        {showPostJob ? (
-
-          <PostJobForm
-            setShowPostJob={
-              setShowPostJob
+        <div
+          onClick={() => setShowMenu(false)}
+          className={`
+    absolute
+    inset-0
+    bg-black/50
+    z-40
+    transition-opacity
+    duration-300
+    ${showMenu
+              ? "opacity-100 visible"
+              : "opacity-0 invisible"
             }
-          />
-
-        ) : !showJobs ? (
-
-          //job search form
-          <JobSearchForm
-            formData={formData}
-            handleChange={handleChange}
-            handleSubmit={handleSubmit}
-          />
-
-        ) : (
-
-          <>
-
-            {/* catagory BAR */}
-
-            <CategoryBar
-              categories={categories}
-              selectedCategory={selectedCategory}
-              setSelectedCategory={setSelectedCategory}
-            />
-
-            {/* JOB GRID */}
-
-            <JobList
-              jobs={jobs}
-              selectedCategory={selectedCategory}
-              handleApply={handleApply}
-              setSelectedJob={setSelectedJob}
-            />
-
-          </>
-
-        )}
-
-        {/* MODAL */}
-
-        <JobDetailsModal
-          selectedJob={selectedJob}
-          setSelectedJob={setSelectedJob}
-          handleApply={handleApply}
+  `}
         />
 
- 
+        {/* SIDE BARS */}
+        <Sidebar
+          showMenu={showMenu}
+          setShowMenu={setShowMenu}
+
+
+          categories={categories}
+          setSelectedCategory={setSelectedCategory}
+          setShowJobs={setShowJobs}
+
+          formData={formData}
+
+
+
+
+
+
+
+          activeSidebarSection={activeSidebarSection}
+          setActiveSidebarSection={setActiveSidebarSection}
+        />
+
+
+
+        {/* MAIN */}
+        {/* <div className="pt-[62px] p-3 sm:p-5"> */}
+        {/* <div className="pt-[62px] p-3 sm:p-5 flex-1"> */}
+        {/* <div className="pt-[62px] p-3 sm:p-5 flex-1 overflow-y-auto"> */}
+        <div className="pt-[62px] p-3 sm:p-5 flex-1 overflow-y-auto flex flex-col">
+
+          {showPostJob ? (
+
+            <PostJobForm
+              setShowPostJob={
+                setShowPostJob
+              }
+            />
+
+          ) : !showJobs ? (
+
+            //job search form
+            <JobSearchForm
+              formData={formData}
+              handleChange={handleChange}
+              handleSubmit={handleSubmit}
+            />
+
+          ) : (
+
+            <>
+
+              {/* catagory BAR */}
+
+              <CategoryBar
+                categories={categories}
+                selectedCategory={selectedCategory}
+                setSelectedCategory={setSelectedCategory}
+              />
+
+              {/* JOB GRID */}
+
+              <JobList
+                jobs={jobs}
+                selectedCategory={selectedCategory}
+                handleApply={handleApply}
+                setSelectedJob={setSelectedJob}
+                setJobCount={setJobCount}
+              />
+
+            </>
+
+          )}
+
+          {/* MODAL */}
+
+          <JobDetailsModal
+            selectedJob={selectedJob}
+            setSelectedJob={setSelectedJob}
+            handleApply={handleApply}
+          />
+
+{showJobs &&
+  (jobCount <= 3 ? (
+    <div
+      className="
+        fixed
+        bottom-0
+        left-1/2
+        -translate-x-1/2
+        w-full
+        max-w-[430px]
+      "
+    >
+      <Footer />
+    </div>
+  ) : (
+    <Footer />
+  ))}
+
+        </div>
+       
+
+
+        <Analytics />
 
       </div>
-            {showJobs && (
-  <Footer />
-)}
-      
-
-      <Analytics />
-
     </div>
 
 

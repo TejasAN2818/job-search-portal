@@ -24,18 +24,50 @@ export default function Sidebar({
 
   return (
 
-    <div
+    // <div
 
-      className={`fixed top-0 left-0 h-screen w-[70%] bg-white z-50 shadow-2xl transition-transform duration-300 overflow-hidden
-          ${showMenu
-          ? "translate-x-0"
-          : "-translate-x-full"
-        }`}
-      >
+    //   className={`fixed top-0 left-0 h-screen w-[70%] bg-white z-50 shadow-2xl transition-transform duration-300 overflow-hidden
+    //       ${showMenu
+    //       ? "translate-x-0"
+    //       : "-translate-x-full"
+    //     }`}
+    //   >
+
+    <div
+  className="
+    absolute
+    inset-0
+    z-50
+    overflow-hidden
+    pointer-events-none
+  "
+>
+ <div
+  className={`
+    absolute
+    left-0
+    top-0
+    w-[70%]
+    h-full
+    bg-white
+    shadow-2xl
+    transition-transform
+    duration-300
+    pointer-events-auto
+    flex
+    flex-col
+    ${
+      showMenu
+        ? "translate-x-0"
+        : "-translate-x-full"
+    }
+  `}
+>
 
       {/* SIDEBAR HEADER */}
 
-    <div className="bg-gradient-to-r from-yellow-400 to-yellow-300 p-2 sticky top-0 z-10 shadow-md">
+    {/* <div className="bg-gradient-to-r from-yellow-400 to-yellow-300 p-2 sticky top-0 z-10 shadow-md"> */}
+    <div className="bg-gradient-to-r from-yellow-400 to-yellow-300 p-2 shadow-md shrink-0">
 
   <div className="flex items-center justify-between">
 
@@ -144,7 +176,15 @@ export default function Sidebar({
 
       {/* MENU ITEMS */}
 
-      <div className="p-3 overflow-y-auto h-[calc(100vh-80px)] pb-20">
+      {/* <div className="p-3 overflow-y-auto h-[calc(100vh-80px)] pb-20"> */}
+      <div
+  className="
+    flex-1
+    overflow-y-auto
+    p-3
+    pb-20
+  "
+>
 
         {/* HOME */}
 
@@ -639,7 +679,7 @@ export default function Sidebar({
       </div>
 
       
-
+</div>
      
 
     </div>

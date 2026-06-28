@@ -33,24 +33,26 @@ export default function CategoryBar({
   return (
 
     <div
-      className="
-        fixed
-        top-[51px]
-        left-0
-        w-full
-        z-40
-        bg-white/95
-        backdrop-blur-md
-        pt-3
-        px-2
-        py-2
-        border-b
-        border-gray-200
-        shadow-sm
-        flex
-        items-center
-        gap-2
-      "
+     className="
+fixed
+top-[51px]
+left-1/2
+-translate-x-1/2
+w-full
+max-w-[430px]
+z-40
+bg-white/95
+backdrop-blur-md
+pt-3
+px-2
+py-2
+border-b
+border-gray-200
+shadow-sm
+flex
+items-center
+gap-2
+"
     >
 
       {/* ALL JOBS BUTTON */}
