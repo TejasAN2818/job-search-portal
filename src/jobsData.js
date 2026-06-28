@@ -122,7 +122,7 @@ const jobs = [
 
   {
     id: 3,
-      views: 13,
+      views: 19,
     category: "Educational",
     jobTitle: "Bussiness Development Associate",
     employmentType: "Part-Time",
